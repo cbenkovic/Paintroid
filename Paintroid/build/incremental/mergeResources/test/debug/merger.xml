@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res" >
+            <file
+                name="icon"
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res\drawable-hdpi\icon.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res\drawable-ldpi\icon.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="icon"
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res\drawable-mdpi\icon.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="main"
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res\layout\main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\src\instrumentTest\res\values\strings.xml"
+                qualifiers="" >
+                <string name="app_name" >PaintroidTest
+                </string>
+                <string name="hello" >Hello World!
+                </string>
+            </file>
+        </source>
+        <source path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid1\Paintroid\build\res\rs\test\debug" />
+    </dataSet>
+
+</merger>
