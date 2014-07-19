@@ -17,17 +17,13 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 19
-
+		
+		packageName "org.catrobat.paintroid"
         testPackageName "org.catrobat.paintroid.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
     }
 
-    buildTypes {
-        release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-    }
+
 }
 
 dependencies {
