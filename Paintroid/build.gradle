@@ -5,7 +5,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.1"
+    buildToolsVersion "19.1.0"
 
     defaultConfig {
 		applicationId "org.catrobat.paintroid"
@@ -26,18 +26,15 @@ android {
 			resources {
 				srcDir 'src/main/res'
 			}
-		
-		
+
 		}
-	
-	
+
 	}
-	
-	
 	
 }
 
 dependencies {
+    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
 	compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile files('libs/junit-4.10.jar')
     androidTestCompile files('libs/robotium-solo-3.6.jar')
