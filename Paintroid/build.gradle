@@ -9,6 +9,7 @@ buildscript {
 
 apply plugin: 'android-sdk-manager'
 apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
@@ -17,17 +18,18 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 19
-		
 		packageName "org.catrobat.paintroid"
         testPackageName "org.catrobat.paintroid.test"
-        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        testInstrumentationRunner "pl.polidea.instrumentation.PolideaInstrumentationTestRunner"
+		versionCode 1
+		versionName "1.0"
     }
 
 
 }
 
 dependencies {
-    compile project(':library')
+	compile fileTree(dir: 'libs', include: ['*.jar'])
     instrumentTestCompile files('libs/junit-4.10.jar')
     instrumentTestCompile files('libs/robotium-solo-3.6.jar')
     instrumentTestCompile files('libs/the-missing-android-xml-junit-test-runner-release-1.3_2.jar')
