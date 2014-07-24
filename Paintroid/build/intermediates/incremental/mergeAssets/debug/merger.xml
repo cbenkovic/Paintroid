@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merger version="2" >
 
+    <dataSet config="4.4.0" >
+        <source path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\assets" />
+    </dataSet>
     <dataSet config="main" >
         <source path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\src\main\assets" />
     </dataSet>

@@ -1,7 +1,16 @@
 
 apply plugin: 'android-sdk-manager'
-apply plugin: 'android'
 apply plugin: 'com.android.application'
+
+dependencies {
+    androidTestCompile 'junit:junit:4.+'
+    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    compile 'com.android.support:support-v4:19.1.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile files('libs/junit-4.10.jar')
+    androidTestCompile files('libs/robotium-solo-3.6.jar')
+    androidTestCompile files('libs/the-missing-android-xml-junit-test-runner-release-1.3_2.jar')
+}
 
 android {
     compileSdkVersion 19
@@ -11,18 +20,21 @@ android {
 		applicationId "org.catrobat.paintroid"
         minSdkVersion 10
         targetSdkVersion 19
-        testPackageName "org.catrobat.paintroid.test"
+        testApplicationId "org.catrobat.paintroid.test"
         testInstrumentationRunner "pl.polidea.instrumentation.PolideaInstrumentationTestRunner"
 		versionCode 1
 		versionName "1.0"
     }
-	
+
 	sourceSets{
+
+        instrumentTest.setRoot('src/androidTest')
+
 		main {
 			java {
 				srcDir 'src/main/java'
 			}
-			
+
 			resources {
 				srcDir 'src/main/res'
 			}
@@ -30,14 +42,7 @@ android {
 		}
 
 	}
-	
+
 }
 
-dependencies {
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
-    compile 'com.android.support:support-v4:19.1.0'
-	compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile files('libs/junit-4.10.jar')
-    androidTestCompile files('libs/robotium-solo-3.6.jar')
-    androidTestCompile files('libs/the-missing-android-xml-junit-test-runner-release-1.3_2.jar')
-}
+
