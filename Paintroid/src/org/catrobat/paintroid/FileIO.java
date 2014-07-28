@@ -360,4 +360,56 @@ public abstract class FileIO {
 			outputStream.write(buffer, 0, bytesRead);
 		}
 	}
+
+    public static int[] getDisplayDimensions() {
+        int[] displayDimenstions = new int[2];
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        Display display = ((WindowManager) PaintroidApplication.applicationContext
+                .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        display.getMetrics(metrics);
+        displayDimenstions[0] = display.getWidth();
+        displayDimenstions[1] = display.getHeight();
+
+        //TODO: use canvas-size instead of display-size?
+
+        return displayDimenstions;
+    }
+
+    //copied from Pocket Code
+    public static int[] getImageDimensions(String imagePath) {
+        int[] imageDimensions = new int[2];
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(imagePath, options);
+        imageDimensions[0] = options.outWidth;
+        imageDimensions[1] = options.outHeight;
+
+        return imageDimensions;
+        }
+
+//    private static Bitmap scaleBitmap(Bitmap bitmap, int xSize, int ySize) {
+//        if (bitmap == null) {
+//            return null;
+//        }
+//        //TODO: implement scale function
+//        if (newBitmap.isMutable()) {
+//            return newBitmap;
+//        } else {
+//            return newBitmap.copy(Config.ARGB_8888, true);
+//        }
+//    }
+
+//    public static Bitmap getScaledBitmapFromFile(File imageFile) {
+//        if (imageFile.getAbsolutePath() == null) {
+//            return null;
+//        }
+//
+//        int[] imageDimensions = getImageDimensions(imageFile.getAbsolutePath());
+//        int[] displayDimensions = getDisplayDimensions();
+//
+//        //TODO: check for need of scaling
+//        return scaleBitmap(tempBitmap, newWidth, newHeight);
+//    }
 }
