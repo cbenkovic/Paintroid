@@ -51,7 +51,8 @@ public class FillCommand extends BaseCommand {
 
 		if ((PaintroidApplication.commandManager.getNumberOfCommands() == EMPTY_COMMAND_LIST_LENGTH + 1)
 				&& (PaintroidApplication.commandManager.getAllCommandList()
-						.size() == 1) && (PaintroidApplication.savedBitmapFile == null)) {
+						.size() == 1)
+				&& (PaintroidApplication.savedPictureUri == null)) {
 			canvas.drawColor(mPaint.getColor());
 			Log.w(PaintroidApplication.TAG,
 					"Fill Command color: " + mPaint.getColor());
