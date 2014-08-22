@@ -201,13 +201,24 @@ public class DrawingSurfaceListener implements OnTouchListener {
 				if (autoScrollDirection.x != 0 || autoScrollDirection.y != 0) {
 					scrolling = true;
 
-					PaintroidApplication.perspective.translate(
-							autoScrollDirection.x * step, autoScrollDirection.y
-									* step);
 					PointF newMovePoint = PaintroidApplication.perspective
 							.getCanvasPointFromSurfacePoint(new PointF(pointX,
 									pointY));
-					PaintroidApplication.currentTool.handleMove(newMovePoint);
+
+					if (newMovePoint.x < 0
+							|| newMovePoint.y < 0
+							|| newMovePoint.x > PaintroidApplication.drawingSurface
+									.getWidth()
+							|| newMovePoint.y > PaintroidApplication.drawingSurface
+									.getHeight()) {
+						this.kill();
+					} else {
+						PaintroidApplication.perspective.translate(
+								autoScrollDirection.x * step,
+								autoScrollDirection.y * step);
+						PaintroidApplication.currentTool
+								.handleMove(newMovePoint);
+					}
 				}
 
 				try {
