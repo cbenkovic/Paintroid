@@ -208,9 +208,9 @@ public class DrawingSurfaceListener implements OnTouchListener {
 					if (newMovePoint.x < 0
 							|| newMovePoint.y < 0
 							|| newMovePoint.x > PaintroidApplication.drawingSurface
-									.getWidth()
+									.getBitmapWidth()
 							|| newMovePoint.y > PaintroidApplication.drawingSurface
-									.getHeight()) {
+									.getBitmapHeight()) {
 						this.kill();
 					} else {
 						PaintroidApplication.perspective.translate(
