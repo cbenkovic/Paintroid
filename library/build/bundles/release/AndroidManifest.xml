@@ -1,5 +1,0 @@
-<!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid1/library/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="90" android:versionName="4.1.0" package="com.actionbarsherlock">
-
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15"/>
-
-</manifest>

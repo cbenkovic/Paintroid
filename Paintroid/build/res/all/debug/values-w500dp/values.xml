@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid1/Paintroid/build/exploded-bundles/Paintroid1LibraryUnspecified.aar/res/values-w500dp/values.xml -->
-    <eat-comment />
-
-    <integer name="abs__max_action_buttons">4</integer>
-
-</resources>

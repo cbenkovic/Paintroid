@@ -1,0 +1,4 @@
+Paintroid exported from Eclipse
+Master von Juli/August 2014
+
+Zum Testen der manuellen Umstellung auf die neue Ordnerstruktur
