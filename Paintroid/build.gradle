@@ -1,6 +1,7 @@
 
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
+apply from: 'adb_tasks.gradle'
 /*
 sourceSets {
     testLocal {
