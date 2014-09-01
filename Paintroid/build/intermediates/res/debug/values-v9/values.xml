@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values-v9/jit.xml -->
-    <eat-comment />
-
-    <bool name="vmSafeMode">false</bool>
-
-</resources>
