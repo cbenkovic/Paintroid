@@ -1,7 +1,7 @@
 
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
-apply from: 'adb_tasks.gradle'
+
 /*
 sourceSets {
     testLocal {
@@ -51,3 +51,5 @@ dependencies {
     androidTestCompile files('libs/robotium-solo-3.6.jar')
     androidTestCompile files('libs/the-missing-android-xml-junit-test-runner-release-1.3_2.jar')
 }
+
+apply from: 'adb_tasks.gradle'
