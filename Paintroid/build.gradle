@@ -47,6 +47,10 @@ dependencies {
     compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
     compile 'com.android.support:support-v4:19.1.0'
 
+
+    androidTestCompile('junit:junit:4.10') {
+        exclude module: 'hamcrest-core'
+    }
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:3.6'
     androidTestCompile files('libs/the-missing-android-xml-junit-test-runner-release-1.3_2.jar')
 }
