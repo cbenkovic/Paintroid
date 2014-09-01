@@ -97,4 +97,4 @@
     	    android:defaultValue="true"
     	   />
 <!--     	 android:summary="@string/preference_button_redo_summary" -->
-</PreferenceScreen><!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/xml/preferences_tools.xml -->
+</PreferenceScreen><!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/xml/preferences_tools.xml -->

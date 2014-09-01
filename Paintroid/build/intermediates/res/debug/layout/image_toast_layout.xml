@@ -38,4 +38,4 @@
                android:layout_height="fill_parent"
                android:layout_marginLeft="10dp"
                android:src="@drawable/icon_menu_crop_cut" />
-</LinearLayout><!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/layout/image_toast_layout.xml -->
+</LinearLayout><!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/layout/image_toast_layout.xml -->

@@ -31,4 +31,4 @@
 <!--         android:summary="@string/preferences_language_summary" -->
 <!--         android:key="@string/preferences_language_key"> -->
 <!--     </ListPreference> -->
-</PreferenceScreen><!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/xml/preferences_legacy.xml -->
+</PreferenceScreen><!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/xml/preferences_legacy.xml -->

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values-v14/colors.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values-v14/colors.xml -->
     <eat-comment />
 
     <color name="dialog_edittext_color">#efefef</color>
     <color name="dialog_edittext_color_hint">#80efefef</color>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values-v14/style.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values-v14/style.xml -->
     <eat-comment />
 
     <style name="CustomPaintroidDialog" parent="@android:style/Theme.Holo.Dialog">
@@ -23,7 +23,7 @@
     <style name="PaintroidOverflowButton" parent="@android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:src">@drawable/icon_menu_overflow</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v14/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v14/values.xml -->
     <eat-comment />
 
     <style name="Sherlock.__Theme" parent="android:Theme.Holo" />
@@ -71,7 +71,7 @@
     <style name="TextAppearance.Sherlock.Widget.PopupMenu.Large" parent="android:TextAppearance.Holo.Widget.PopupMenu.Large" />
 
     <style name="TextAppearance.Sherlock.Widget.PopupMenu.Small" parent="android:TextAppearance.Holo.Widget.PopupMenu.Small" />
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values-v14/style.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values-v14/style.xml -->
     <eat-comment />
 
     <style name="Theme.PaintroidActionBar" parent="@style/Theme.Sherlock.Light.DarkActionBar">
@@ -85,7 +85,7 @@
         <item name="actionBarSize">50dip</item>
         <item name="android:actionBarSize">50dip</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v14/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values-v14/values.xml -->
     <eat-comment />
 
     <style name="Theme.Sherlock.Light.NoActionBar">

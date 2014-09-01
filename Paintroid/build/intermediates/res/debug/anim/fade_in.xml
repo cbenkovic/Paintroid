@@ -21,4 +21,4 @@
      android:interpolator="@android:anim/accelerate_interpolator" 
    android:duration="500"
     android:repeatCount="0"/>
- </set><!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/anim/fade_in.xml -->
+ </set><!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/anim/fade_in.xml -->

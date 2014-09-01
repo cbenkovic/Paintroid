@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
 
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/arrays.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/arrays.xml -->
     <eat-comment />
 
     <array name="new_image">
@@ -30,7 +30,7 @@
         <item name="white">@color/color_chooser_white</item>
         <item name="transparent">@color/color_chooser_transparent</item>
     </array>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <attr name="background" format="reference|color" />
@@ -53,7 +53,7 @@
     <color name="abs__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
     <color name="abs__bright_foreground_holo_dark">@color/abs__background_holo_light</color>
     <color name="abs__bright_foreground_holo_light">@color/abs__background_holo_dark</color>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/colors.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/colors.xml -->
     <eat-comment />
 
     <color name="color_chooser_black">#FF000000</color>
@@ -94,7 +94,7 @@
     <color name="text_color">@android:color/white</color>
     <color name="tools_text_color">#efefef</color>
     <color name="transparent">#00000000</color>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <declare-styleable name="SherlockActionBar">
@@ -564,7 +564,7 @@
     <item name="abs__up" type="id"/>
 
     <integer name="abs__max_action_buttons">2</integer>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/string.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/string.xml -->
     <eat-comment />
 
     <string name="about_catroid_url_text">About Catrobat</string>
@@ -573,7 +573,7 @@
     <string name="about_link_template" translatable="false">&lt;a href=\"%1$s\">%2$s&lt;/a></string>
     <string name="about_title">About Pocket Paint…</string>
     <string name="about_version">Version:</string>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <string name="abs__action_bar_home_description">Navigate home</string>
@@ -589,7 +589,7 @@
     <string name="abs__searchview_description_voice">Voice search</string>
     <string name="abs__shareactionprovider_share_with">Share with</string>
     <string name="abs__shareactionprovider_share_with_application">Share with <ns1:g id="application_name" example="Bluetooth">%s</ns1:g></string>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/string.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/string.xml -->
     <eat-comment />
 
     <string name="app_name">Pocket Paint</string>
@@ -691,7 +691,7 @@
     <string name="terms_of_use_and_service_url" translatable="false">http://developer.catrobat.org/terms_of_use_and_service</string>
     <string name="terms_of_use_and_service_url_text">Terms of Use and Service</string>
     <string name="yes">Yes</string>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/style.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/style.xml -->
     <eat-comment />
 
     <style name="CustomPaintroidDialog" parent="@android:style/Theme.Dialog">
@@ -733,7 +733,7 @@
     <style name="PaintroidPoupupMenuStyle" parent="android:style/Widget.Holo.Light.ListPopupWindow">
         <item name="android:popupBackground">@color/custom_background_color</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <style name="Sherlock.__TextAppearance.Small" parent="Widget">
@@ -922,14 +922,14 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/style.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/style.xml -->
     <eat-comment />
 
     <style name="Theme.PaintroidActionBar" parent="@style/Theme.Sherlock.Light.DarkActionBar">
         <item name="actionOverflowButtonStyle">@style/PaintroidOverflowButton</item>
         <item name="actionBarSize">50dip</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <style name="Theme.Sherlock" parent="Sherlock.__Theme">
@@ -1112,7 +1112,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/src/main/res/values/style.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/src/main/res/values/style.xml -->
     <eat-comment />
 
     <style name="ToolButton">
@@ -1122,7 +1122,7 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@color/custom_background_color</item>
     </style>
-    <!-- From: file:/C:/Users/Alex/Documents/Studium%20Informatik/6.%20Semester/Bachelorarbeit%20Android/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
+    <!-- From: file:/home/roland_urbano/git/Paintroid/Paintroid/build/intermediates/exploded-aar/com.actionbarsherlock/actionbarsherlock/4.4.0/res/values/values.xml -->
     <eat-comment />
 
     <style name="Widget" />
