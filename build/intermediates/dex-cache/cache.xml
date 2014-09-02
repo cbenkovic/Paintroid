@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a80368c05e549f70f5df29ed7af053dcbae64021.jar"
+        jar="C:\Users\Alex\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\the-missing-android-xml-junit-test-runner-release-1.3_2-645b58d9c5583f98ba99b83b4e1c257b827361b8.jar"
+        jar="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\libs\the-missing-android-xml-junit-test-runner-release-1.3_2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="d62fdd2046e9779de36d0c017d4ba16eba5c9b0d"/>
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\classes-6be624c8f126a6ed214d45e6853e454453061558.jar"
+        jar="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="af64527b748983a75de9c0756e9768b56b240a49"/>
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\robotium-solo-3.6-93ebda177dc6379ff7cea6be641122099c4c8503.jar"
+        jar="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\libs\robotium-solo-3.6.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="fc440c21c7c4757ed5d108115ed03bf2e8d0239e"/>
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\junit-4.10-4f8ca0f67206d491a727272690e1989edc58452f.jar"
+        jar="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\libs\junit-4.10.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="28496454496957d3efb815d5a77723d8e3d8b912"/>
+
+</pre-dex-items>
