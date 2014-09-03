@@ -92,7 +92,8 @@ public enum ToolType {
 	}
 
 	public boolean isColorChangeAllowed() {
-		return mAllowColorChange;
+		//return mAllowColorChange;
+        return true;
 	}
 
 	public boolean shouldReactToStateChange(StateChange stateChange) {
