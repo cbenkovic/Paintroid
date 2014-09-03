@@ -19,7 +19,17 @@
 
 package org.catrobat.paintroid.ui;
 
-import java.util.Observable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.OptionsMenuActivity;
@@ -32,17 +42,7 @@ import org.catrobat.paintroid.tools.ToolFactory;
 import org.catrobat.paintroid.tools.ToolType;
 import org.catrobat.paintroid.tools.implementation.DrawTool;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.Gravity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import java.util.Observable;
 
 public class TopBar extends Observable implements OnTouchListener {
 
@@ -221,8 +221,7 @@ public class TopBar extends Observable implements OnTouchListener {
 	}
 
 	private void onColorTouch(MotionEvent event) {
-		if ((event.getAction() == MotionEvent.ACTION_DOWN)
-				&& mCurrentTool.getToolType().isColorChangeAllowed()) {
+		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			ColorPickerDialog.getInstance().show();
 			ColorPickerDialog.getInstance().setInitialColor(
 					mCurrentTool.getDrawPaint().getColor());

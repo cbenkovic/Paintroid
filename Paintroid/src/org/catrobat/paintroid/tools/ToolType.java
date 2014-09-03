@@ -19,10 +19,10 @@
 
 package org.catrobat.paintroid.tools;
 
-import java.util.EnumSet;
-
 import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.tools.Tool.StateChange;
+
+import java.util.EnumSet;
 
 public enum ToolType {
 	ELLIPSE(R.string.button_ellipse, R.drawable.icon_menu_ellipse,
@@ -67,7 +67,6 @@ public enum ToolType {
 	private int mNameResource;
 	private int mImageResouce;
 	private int mHelpTextResource;
-	private boolean mAllowColorChange;
 	private EnumSet<StateChange> mStateChangeBehaviour;
 
 	private ToolType(int nameResource, int imageResource, int helpTextResource,
@@ -75,7 +74,6 @@ public enum ToolType {
 		mNameResource = nameResource;
 		mImageResouce = imageResource;
 		mHelpTextResource = helpTextResource;
-		mAllowColorChange = allowColorchange;
 		mStateChangeBehaviour = stateChangeBehaviour;
 	}
 
@@ -89,11 +87,6 @@ public enum ToolType {
 
 	public int getHelpTextResource() {
 		return mHelpTextResource;
-	}
-
-	public boolean isColorChangeAllowed() {
-		//return mAllowColorChange;
-        return true;
 	}
 
 	public boolean shouldReactToStateChange(StateChange stateChange) {
