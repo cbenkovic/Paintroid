@@ -184,6 +184,7 @@ public class TopBar extends Observable implements OnTouchListener {
 			onColorTouch(event);
 			return true;
 		default:
+			event.recycle();
 			return false;
 		}
 	}

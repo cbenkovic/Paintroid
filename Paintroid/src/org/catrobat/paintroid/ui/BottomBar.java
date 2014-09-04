@@ -53,11 +53,13 @@ public class BottomBar implements View.OnTouchListener {
 				ToolsDialog.getInstance().show();
 				return true;
 			default:
+				motionEvent.recycle();
 				return false;
 			}
 		} else if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 			view.setBackgroundResource(R.color.abs__holo_blue_light);
 		}
+		motionEvent.recycle();
 		return false;
 	}
 
