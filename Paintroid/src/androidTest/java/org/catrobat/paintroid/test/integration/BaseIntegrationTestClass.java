@@ -69,7 +69,7 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
 	protected View mMenuBottomParameter2;
 	protected int mScreenWidth;
 	protected int mScreenHeight;
-	protected static final int TIMEOUT = 10000;// Don't worry it's just a timeout!
+	protected static final int TIMEOUT = 3000;// Don't worry it's just a timeout!
 	protected boolean mTestCaseWithActivityFinished = false;
 	protected final int VERSION_ICE_CREAM_SANDWICH = 14;
 	protected Bitmap mCurrentDrawingSurfaceBitmap;
