@@ -51,10 +51,10 @@ public class ActivityOpenedFromPocketCodeNewImageTest extends BaseIntegrationTes
 		imageFile = getImageFile(imageName);
 
 		mSolo.sendKey(Solo.MENU);
-		assertTrue("click on Back to Catroid", mSolo.searchText(mSolo.getString(R.string.menu_back)));
+		assertTrue("click on Back to Catroid", mSolo.waitForText(mSolo.getString(R.string.menu_back)));
 		mSolo.clickOnText(mSolo.getString(R.string.menu_back));
-		assertTrue("Ok Button not found", mSolo.searchButton(mSolo.getString(R.string.save_button_text)));
-		assertTrue("No Button not found", mSolo.searchButton(mSolo.getString(R.string.discard_button_text)));
+		assertTrue("Ok Button not found", mSolo.waitForText(mSolo.getString(R.string.save_button_text)));
+		assertTrue("No Button not found", mSolo.waitForText(mSolo.getString(R.string.discard_button_text)));
 
 		mSolo.clickOnButton(mSolo.getString(R.string.save_button_text));
 

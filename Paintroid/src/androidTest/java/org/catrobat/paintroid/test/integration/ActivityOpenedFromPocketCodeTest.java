@@ -52,10 +52,10 @@ public class ActivityOpenedFromPocketCodeTest extends BaseIntegrationTestClass {
 		mSolo.clickOnScreen(pointOnScreen.x, pointOnScreen.y);
 
 		mSolo.sendKey(Solo.MENU);
-		assertTrue("click on Back to Catroid", mSolo.searchText(mSolo.getString(R.string.menu_back)));
+		assertTrue("click on Back to Catroid", mSolo.waitForText(mSolo.getString(R.string.menu_back)));
 		mSolo.clickOnText(mSolo.getString(R.string.menu_back));
-		assertTrue("Ok Button not found", mSolo.searchButton(mSolo.getString(R.string.save_button_text)));
-		assertTrue("No Button not found", mSolo.searchButton(mSolo.getString(R.string.discard_button_text)));
+		assertTrue("Ok Button not found", mSolo.waitForText(mSolo.getString(R.string.save_button_text)));
+		assertTrue("No Button not found", mSolo.waitForText(mSolo.getString(R.string.discard_button_text)));
 
 		long lastModifiedBefore = imageFile.lastModified();
 		long fileSizeBefore = imageFile.length();
@@ -78,7 +78,7 @@ public class ActivityOpenedFromPocketCodeTest extends BaseIntegrationTestClass {
         long fileSizeBefore = imageFile.length();
 
         mSolo.sendKey(Solo.MENU);
-        assertTrue("click on export", mSolo.searchText(mSolo.getString(R.string.menu_export)));
+        assertTrue("click on export", mSolo.waitForText(mSolo.getString(R.string.menu_export)));
         mSolo.clickOnText(mSolo.getString(R.string.menu_export));
 
         mSolo.waitForDialogToClose(TIMEOUT);
@@ -93,10 +93,10 @@ public class ActivityOpenedFromPocketCodeTest extends BaseIntegrationTestClass {
 		mSolo.clickOnScreen(pointOnScreen.x, pointOnScreen.y);
 
 		mSolo.sendKey(Solo.MENU);
-		assertTrue("click on Back to Catroid", mSolo.searchText(mSolo.getString(R.string.menu_back)));
+		assertTrue("click on Back to Catroid", mSolo.waitForText(mSolo.getString(R.string.menu_back)));
 		mSolo.clickOnText(mSolo.getString(R.string.menu_back));
-		assertTrue("Ok Button not found", mSolo.searchButton(mSolo.getString(R.string.save_button_text)));
-		assertTrue("No Button not found", mSolo.searchButton(mSolo.getString(R.string.discard_button_text)));
+		assertTrue("Ok Button not found", mSolo.waitForText(mSolo.getString(R.string.save_button_text)));
+		assertTrue("No Button not found", mSolo.waitForText(mSolo.getString(R.string.discard_button_text)));
 
 		long lastModifiedBefore = imageFile.lastModified();
 		long fileSizeBefore = imageFile.length();
