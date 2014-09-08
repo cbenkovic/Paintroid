@@ -55,9 +55,9 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 	@Override
 	@Before
 	protected void setUp() throws Exception {
-		mToolToTest = new BaseToolWithRectangleShapeImpl(getActivity(), ToolType.NONE);
 		super.setUp();
-		mScreenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+        mToolToTest = new BaseToolWithRectangleShapeImpl(getActivity(), ToolType.NONE);
+        mScreenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
 		mScreenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();
 	}
 
