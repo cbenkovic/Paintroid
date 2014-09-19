@@ -24,7 +24,7 @@ import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.command.Command;
 import org.catrobat.paintroid.command.implementation.CutCommand;
 import org.catrobat.paintroid.command.implementation.StampCommand;
-import org.catrobat.paintroid.dialog.ProgressIntermediateDialog;
+import org.catrobat.paintroid.dialog.IndeterminateProgressDialog;
 import org.catrobat.paintroid.tools.ToolType;
 import org.catrobat.paintroid.ui.TopBar.ToolButtonIDs;
 
@@ -317,7 +317,7 @@ public class CutTool extends BaseToolWithRectangleShape {
 				mBoxWidth, mBoxHeight, mBoxRotation);
 
 		((StampCommand) command).addObserver(this);
-		ProgressIntermediateDialog.getInstance().show();
+		IndeterminateProgressDialog.getInstance().show();
 		PaintroidApplication.commandManager.commitCommand(command);
 	}
 
@@ -347,7 +347,7 @@ public class CutTool extends BaseToolWithRectangleShape {
 				mBoxWidth, mBoxHeight, mBoxRotation);
 
 		((CutCommand) command).addObserver(this);
-		ProgressIntermediateDialog.getInstance().show();
+		IndeterminateProgressDialog.getInstance().show();
 		PaintroidApplication.commandManager.commitCommand(command);
 
 	}
@@ -358,7 +358,7 @@ public class CutTool extends BaseToolWithRectangleShape {
 		@Override
 		protected void onPreExecute() {
 
-			ProgressIntermediateDialog.getInstance().show();
+			IndeterminateProgressDialog.getInstance().show();
 			super.onPreExecute();
 		}
 
@@ -376,7 +376,7 @@ public class CutTool extends BaseToolWithRectangleShape {
 		protected void onPostExecute(Void result) {
 
 			sendCutCommand();
-			ProgressIntermediateDialog.getInstance().dismiss();
+			IndeterminateProgressDialog.getInstance().dismiss();
 			super.onPostExecute(result);
 		}
 
