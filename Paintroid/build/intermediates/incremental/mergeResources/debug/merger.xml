@@ -5050,8 +5050,8 @@ false
                 qualifiers=""
                 type="layout" />
             <file
-                name="custom_progress_dialogue"
-                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\src\main\res\layout\custom_progress_dialogue.xml"
+                name="custom_progress_dialog"
+                path="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\Paintroid\Paintroid\src\main\res\layout\custom_progress_dialog.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -5275,11 +5275,11 @@ false
                 </string>
                 <string name="done" >Done
                 </string>
-                <string name="help_content_flip" >Click on the symbols on the bottom bar to flip the image.
+                <string name="help_content_flip" >Tap on the symbols on the bottom bar to flip the image.
                 </string>
                 <string name="dialog_overwrite_text" >Overwrite an existing file?
                 </string>
-                <string name="help_content_rectangle" >Move and resize the Rectangle. Click to paint the rectangle on the image.
+                <string name="help_content_rectangle" >Move and resize the Rectangle. Tap to paint the rectangle on the image.
                 </string>
                 <string name="terms_of_use_and_service_content" >In order to be allowed to use Pocket Paint and other executables offered by the Catrobat project, you must agree to our Terms of Use and Service and strictly follow them when you use Pocket Code and our other executables. Please see the link below for their precise formulation.\n\n
                 </string>
@@ -5326,7 +5326,7 @@ false
                     name="catroid_url"
                     translatable="false" >http://catrobat.org/
                 </string>
-                <string name="help_content_ellipse" >Move and resize the circle or transform it to an ellipse. Click to paint the shape on the image
+                <string name="help_content_ellipse" >Move and resize the circle or transform it to an ellipse. Tap to paint the shape on the image
                 </string>
                 <string name="closing_security_question" >Save Changes?
                 </string>
@@ -5358,9 +5358,9 @@ false
                 </string>
                 <string name="cancel" >Cancel
                 </string>
-                <string name="help_content_cursor" >Position the cursor where you want to draw. Click to activate the cursor. Move your finger to draw. Click again to deactivate.
+                <string name="help_content_cursor" >Position the cursor where you want to draw. Tap to activate the cursor. Move your finger to draw. Tap again to deactivate.
                 </string>
-                <string name="help_content_brush" >Click on the symbols on the bottom bar to change the color or the brush size.
+                <string name="help_content_brush" >Tap on the symbols on the bottom bar to change the color or the brush size.
                 </string>
                 <string name="menu_about" >About
                 </string>
@@ -5390,13 +5390,13 @@ false
                 </string>
                 <string name="dialog_error_sdcard_text" >Check Image or SD-Card!
                 </string>
-                <string name="help_content_zoom" >Click on the symbols on the bottom bar to zoom in or zoom out.
+                <string name="help_content_zoom" >Tap on the symbols on the bottom bar to zoom in or zoom out.
                 </string>
                 <string name="app_name" >Pocket Paint
                 </string>
                 <string name="dialog_tools_title" >Tools
                 </string>
-                <string name="help_content_stamp" >Move and resize the rectangle to cover the area you want to stamp. Click to select the area. Move and click again to stamp.
+                <string name="help_content_stamp" >Move and resize the rectangle to cover the area you want to stamp. Tap to select the area. Move and Tap again to stamp.
                 </string>
                 <string name="crop_nothing_to_corp" >nothing to crop
                 </string>
@@ -5404,7 +5404,7 @@ false
                 </string>
                 <string name="menu_save_image" >Save image
                 </string>
-                <string name="crop_algorithm_finish_text" >to crop click
+                <string name="crop_algorithm_finish_text" >to crop tap
                 </string>
                 <string name="menu_save_copy" >Save copy
                 </string>
@@ -5415,7 +5415,7 @@ false
                     translatable="false"
                     ns1:ignore="UnusedResources" >org.catrobat.extra.PAINTROID_Y
                 </string>
-                <string name="help_content_fill" >Click on the image to fill an area with the selected color.
+                <string name="help_content_fill" >Tap on the image to fill an area with the selected color.
                 </string>
                 <string
                     name="terms_of_use_and_service_link_template"
@@ -5429,11 +5429,11 @@ false
                 </string>
                 <string name="button_brush" >Brush
                 </string>
-                <string name="help_content_redo" >Click to redo an undone action.
+                <string name="help_content_redo" >Tap to redo an undone action.
                 </string>
                 <string name="closing_catroid_security_question_title" >Back to Pocket Code
                 </string>
-                <string name="help_content_eyedropper" >Click on the image to select a color.
+                <string name="help_content_eyedropper" >Tap on the image to select a color.
                 </string>
                 <string name="about_version" >Version:
                 </string>
@@ -5457,7 +5457,7 @@ false
                     name="ok"
                     ns1:ignore="Typos" >@android:string/ok
                 </string>
-                <string name="help_content_rotate" >Click on the buttons to rotate the image left or right.
+                <string name="help_content_rotate" >Tap on the buttons to rotate the image left or right.
                 </string>
                 <string name="button_eraser" >Eraser
                 </string>
@@ -5473,7 +5473,7 @@ false
                 </string>
                 <string name="terms_of_use_and_service_url_text" >Terms of Use and Service
                 </string>
-                <string name="help_content_undo" >Click to undo your previous action.
+                <string name="help_content_undo" >Tap to undo your previous action.
                 </string>
                 <string name="menu_new_image_empty_image" >Empty Image
                 </string>
