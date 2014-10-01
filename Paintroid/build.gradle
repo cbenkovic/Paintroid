@@ -36,6 +36,12 @@ android {
 
 		}
 
+        androidTest {
+            if (file('testexclusions.txt').exists()) {
+                java.exclude file('testexclusions.txt').readLines()
+            }
+        }
+
         //instrumentTest.setRoot('src/androidTest')
 
 
