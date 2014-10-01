@@ -37,8 +37,8 @@ android {
 		}
 
         androidTest {
-            if (file('testexclusions.txt').exists()) {
-                java.exclude file('testexclusions.txt').readLines()
+            if (file('../testexclusions.txt').exists()) {
+                java.exclude file('../testexclusions.txt').readLines()
             }
         }
 
