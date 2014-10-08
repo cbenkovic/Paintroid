@@ -31,6 +31,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.PointF;
+import android.util.DisplayMetrics;
 
 public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 
@@ -57,8 +58,15 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 	protected void setUp() throws Exception {
 		mToolToTest = new BaseToolWithRectangleShapeImpl(getActivity(), ToolType.NONE);
 		super.setUp();
-		mScreenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
-		mScreenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        mScreenWidth = displaymetrics.widthPixels;
+        mScreenHeight = displaymetrics.heightPixels;
+
+		//mScreenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+		//mScreenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();
 	}
 
 	public void testResizeRectangle() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
