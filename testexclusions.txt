@@ -1,0 +1,1 @@
+Paintroid/src/androidTest/java/org/catrobat/paintroid/test/junit/tools/BaseToolWithRectangleShapeToolTest.java
