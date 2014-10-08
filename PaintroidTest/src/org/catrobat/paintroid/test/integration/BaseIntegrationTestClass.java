@@ -44,6 +44,7 @@ import android.graphics.Paint.Cap;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -108,8 +109,16 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
 			mMenuBottomTool = getActivity().findViewById(R.id.btn_bottom_tools);
 			mMenuBottomParameter1 = getActivity().findViewById(R.id.btn_bottom_attribute1);
 			mMenuBottomParameter2 = getActivity().findViewById(R.id.btn_bottom_attribute2);
-			mScreenWidth = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getWidth();
-			mScreenHeight = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getHeight();
+
+            DisplayMetrics displaymetrics = new DisplayMetrics();
+
+            mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            mScreenWidth = displaymetrics.widthPixels;
+            mScreenHeight = displaymetrics.heightPixels;
+
+			//mScreenWidth = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getWidth();
+			//mScreenHeight = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getHeight();
+
 			Log.d("Paintroid test", "setup" + setup++);
 			mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 					PaintroidApplication.drawingSurface, "mWorkingBitmap");
