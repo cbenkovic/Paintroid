@@ -30,6 +30,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import android.graphics.PointF;
+import android.util.DisplayMetrics;
 
 public class MoveZoomTest extends BaseToolTest {
 
@@ -42,8 +43,13 @@ public class MoveZoomTest extends BaseToolTest {
 
 	public void testMove() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
-		float screenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
-		float screenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+		float screenWidth = displaymetrics.widthPixels;
+		float screenHeight = displaymetrics.heightPixels;
 
 		float offset = 50.0f;
 

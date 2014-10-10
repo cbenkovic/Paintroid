@@ -129,7 +129,9 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 				.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB_MR2) {
-            mBoxWidth = display.getWidth()
+            Point size = new Point();
+            display.getSize(size);
+            mBoxWidth = size.x
                     / PaintroidApplication.perspective.getScale()
                     - getInverselyProportionalSizeForZoom(DEFAULT_RECTANGLE_MARGIN)
                     * 2;

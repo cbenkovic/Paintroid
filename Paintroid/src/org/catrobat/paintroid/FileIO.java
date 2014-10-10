@@ -225,8 +225,9 @@ public abstract class FileIO {
 		Display display = ((WindowManager) PaintroidApplication.applicationContext
 				.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		display.getMetrics(metrics);
-		int maxWidth = display.getWidth();
-		int maxHeight = display.getHeight();
+
+        int maxWidth = metrics.widthPixels;
+        int maxHeight = metrics.heightPixels;
 
 		while (tmpWidth > maxWidth || tmpHeight > maxHeight) {
 			tmpWidth /= 2;
@@ -284,8 +285,9 @@ public abstract class FileIO {
 		Display display = ((WindowManager) PaintroidApplication.applicationContext
 				.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		display.getMetrics(metrics);
-		int maxWidth = display.getWidth();
-		int maxHeight = display.getHeight();
+
+		int maxWidth = metrics.widthPixels;
+		int maxHeight = metrics.heightPixels;
 
 		while (tmpWidth > maxWidth || tmpHeight > maxHeight) {
 			tmpWidth /= 2;

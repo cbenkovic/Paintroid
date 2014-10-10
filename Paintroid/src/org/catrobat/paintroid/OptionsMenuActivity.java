@@ -34,6 +34,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -358,9 +359,12 @@ public abstract class OptionsMenuActivity extends SherlockFragmentActivity {
 	}
 
 	protected void initialiseNewBitmap() {
-		Display display = getWindowManager().getDefaultDisplay();
-		float width = display.getWidth();
-		float height = display.getHeight();
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        float width = size.x;
+        float height = size.y;
+
 		Log.d("PAINTROID - MFA", "init new bitmap with: w: " + width + " h:"
 				+ height);
 		Bitmap bitmap = Bitmap.createBitmap((int) width, (int) height,

@@ -89,8 +89,9 @@ public abstract class BaseTool extends Observable implements Tool, Observer {
 		CHECKERED_PATTERN.setShader(shader);
 		WindowManager windowManager = (WindowManager) PaintroidApplication.applicationContext
 				.getSystemService(Context.WINDOW_SERVICE);
-		mScrollTolerance = windowManager.getDefaultDisplay().getWidth()
-				* SCROLL_TOLERANCE_PERCENTAGE / 100;
+        Point size = new Point();
+        windowManager.getDefaultDisplay().getSize(size);
+		mScrollTolerance = size.x * SCROLL_TOLERANCE_PERCENTAGE / 100;
 	}
 
 	public BaseTool(Context context, ToolType toolType) {
