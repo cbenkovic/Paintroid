@@ -116,9 +116,6 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
             mScreenWidth = displaymetrics.widthPixels;
             mScreenHeight = displaymetrics.heightPixels;
 
-			//mScreenWidth = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getWidth();
-			//mScreenHeight = mSolo.getCurrentActivity().getWindowManager().getDefaultDisplay().getHeight();
-
 			Log.d("Paintroid test", "setup" + setup++);
 			mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 					PaintroidApplication.drawingSurface, "mWorkingBitmap");

@@ -64,9 +64,6 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         mScreenWidth = displaymetrics.widthPixels;
         mScreenHeight = displaymetrics.heightPixels;
-
-		//mScreenWidth = getActivity().getWindowManager().getDefaultDisplay().getWidth();
-		//mScreenHeight = getActivity().getWindowManager().getDefaultDisplay().getHeight();
 	}
 
 	public void testResizeRectangle() throws SecurityException, IllegalArgumentException, NoSuchFieldException,

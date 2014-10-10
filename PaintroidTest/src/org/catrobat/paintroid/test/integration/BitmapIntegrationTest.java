@@ -30,6 +30,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.PointF;
+import android.util.DisplayMetrics;
 import android.view.Display;
 
 public class BitmapIntegrationTest extends BaseIntegrationTestClass {
@@ -94,9 +95,12 @@ public class BitmapIntegrationTest extends BaseIntegrationTestClass {
 		float bitmapHeight = PaintroidApplication.drawingSurface.getBitmapHeight();
 		float bitmapWidth = PaintroidApplication.drawingSurface.getBitmapWidth();
 
-		Display display = getActivity().getWindowManager().getDefaultDisplay();
-		float displayWidth = display.getWidth();
-		float displayHeight = display.getHeight();
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+
+		float displayWidth = displaymetrics.widthPixels;
+		float displayHeight = displaymetrics.heightPixels;
 
 		assertEquals("bitmap height should be screen height", bitmapHeight, displayHeight);
 		assertEquals("bitmap width should be screen width", bitmapWidth, displayWidth);
