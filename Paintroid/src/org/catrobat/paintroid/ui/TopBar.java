@@ -152,7 +152,7 @@ public class TopBar extends Observable implements OnTouchListener {
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(
 				mainActivity.getResources(), bitmap);
 		bitmapDrawable.setAlpha(SWITCH_TOOL_BACKGROUND_ALPHA);
-		mToolButton.setBackgroundDrawable(bitmapDrawable);
+		mToolButton.setBackground(bitmapDrawable);
 	}
 
 	private void showToolChangeToast() {
