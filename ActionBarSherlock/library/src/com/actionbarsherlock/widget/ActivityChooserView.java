@@ -523,9 +523,9 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
         }
         // Activity chooser content.
         if (mDefaultActivityButton.getVisibility() == VISIBLE) {
-            mActivityChooserContent.setBackgroundDrawable(mActivityChooserContentBackground);
+            mActivityChooserContent.setBackground(mActivityChooserContentBackground);
         } else {
-            mActivityChooserContent.setBackgroundDrawable(null);
+            mActivityChooserContent.setBackground(null);
         }
     }
 
