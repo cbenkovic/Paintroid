@@ -375,7 +375,7 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
             getListPopupWindow().dismiss();
             ViewTreeObserver viewTreeObserver = getViewTreeObserver();
             if (viewTreeObserver.isAlive()) {
-                viewTreeObserver.removeGlobalOnLayoutListener(mOnGlobalLayoutListener);
+                viewTreeObserver.removeOnGlobalLayoutListener(mOnGlobalLayoutListener);
             }
         }
         return true;
@@ -409,7 +409,7 @@ class ActivityChooserView extends ViewGroup implements ActivityChooserModelClien
         }
         ViewTreeObserver viewTreeObserver = getViewTreeObserver();
         if (viewTreeObserver.isAlive()) {
-            viewTreeObserver.removeGlobalOnLayoutListener(mOnGlobalLayoutListener);
+            viewTreeObserver.removeOnGlobalLayoutListener(mOnGlobalLayoutListener);
         }
         mIsAttachedToWindow = false;
     }
