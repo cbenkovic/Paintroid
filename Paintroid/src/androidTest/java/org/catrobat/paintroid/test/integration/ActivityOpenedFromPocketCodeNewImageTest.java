@@ -10,7 +10,7 @@ import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Environment;
 
-import com.jayway.android.robotium.solo.Solo;
+import com.robotium.solo.Solo;
 
 public class ActivityOpenedFromPocketCodeNewImageTest extends BaseIntegrationTestClass {
 
@@ -27,9 +27,9 @@ public class ActivityOpenedFromPocketCodeNewImageTest extends BaseIntegrationTes
 
 		extras.putExtra("org.catrobat.extra.PAINTROID_PICTURE_PATH", "");
 		extras.putExtra("org.catrobat.extra.PAINTROID_PICTURE_NAME", imageName);
-
 		setActivityIntent(extras);
-		super.setUp();
+        getActivity();
+        super.setUp();
 	}
 
 	@Override
@@ -51,14 +51,15 @@ public class ActivityOpenedFromPocketCodeNewImageTest extends BaseIntegrationTes
 		imageFile = getImageFile(imageName);
 
 		mSolo.sendKey(Solo.MENU);
-		assertTrue("click on Back to Catroid", mSolo.waitForText(mSolo.getString(R.string.menu_back)));
+		assertTrue("click on Back to Catroid", mSolo.searchText(mSolo.getString(R.string.menu_back)));
 		mSolo.clickOnText(mSolo.getString(R.string.menu_back));
-		assertTrue("Ok Button not found", mSolo.waitForText(mSolo.getString(R.string.save_button_text)));
-		assertTrue("No Button not found", mSolo.waitForText(mSolo.getString(R.string.discard_button_text)));
+		assertTrue("Ok Button not found", mSolo.searchButton(mSolo.getString(R.string.save_button_text)));
+		assertTrue("No Button not found", mSolo.searchButton(mSolo.getString(R.string.discard_button_text)));
 
 		mSolo.clickOnButton(mSolo.getString(R.string.save_button_text));
 
-		mSolo.waitForDialogToClose(TIMEOUT);
+		mSolo.waitForDialogToClose(TIMEOUT); //Save Dialog
+        mSolo.waitForDialogToClose(TIMEOUT); //Progress Dialog
 
 		assertTrue(imageFile.exists());
 		assertTrue(imageFile.length() > 0);

@@ -19,6 +19,28 @@
 
 package org.catrobat.paintroid;
 
+import java.io.File;
+
+import org.catrobat.paintroid.dialog.BrushPickerDialog;
+import org.catrobat.paintroid.dialog.CustomAlertDialogBuilder;
+import org.catrobat.paintroid.dialog.DialogAbout;
+import org.catrobat.paintroid.dialog.DialogTermsOfUseAndService;
+import org.catrobat.paintroid.dialog.IndeterminateProgressDialog;
+import org.catrobat.paintroid.dialog.InfoDialog;
+import org.catrobat.paintroid.dialog.InfoDialog.DialogType;
+import org.catrobat.paintroid.dialog.ToolsDialog;
+import org.catrobat.paintroid.dialog.colorpicker.ColorPickerDialog;
+import org.catrobat.paintroid.listener.DrawingSurfaceListener;
+import org.catrobat.paintroid.tools.Tool;
+import org.catrobat.paintroid.tools.ToolFactory;
+import org.catrobat.paintroid.tools.ToolType;
+import org.catrobat.paintroid.tools.implementation.ImportTool;
+import org.catrobat.paintroid.ui.BottomBar;
+import org.catrobat.paintroid.ui.DrawingSurface;
+import org.catrobat.paintroid.ui.Perspective;
+import org.catrobat.paintroid.ui.TopBar;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -42,27 +64,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-import org.catrobat.paintroid.dialog.BrushPickerDialog;
-import org.catrobat.paintroid.dialog.CustomAlertDialogBuilder;
-import org.catrobat.paintroid.dialog.DialogAbout;
-import org.catrobat.paintroid.dialog.DialogTermsOfUseAndService;
-import org.catrobat.paintroid.dialog.InfoDialog;
-import org.catrobat.paintroid.dialog.InfoDialog.DialogType;
-import org.catrobat.paintroid.dialog.ProgressIntermediateDialog;
-import org.catrobat.paintroid.dialog.ToolsDialog;
-import org.catrobat.paintroid.dialog.colorpicker.ColorPickerDialog;
-import org.catrobat.paintroid.listener.DrawingSurfaceListener;
-import org.catrobat.paintroid.tools.Tool;
-import org.catrobat.paintroid.tools.ToolFactory;
-import org.catrobat.paintroid.tools.ToolType;
-import org.catrobat.paintroid.tools.implementation.ImportTool;
-import org.catrobat.paintroid.ui.BottomBar;
-import org.catrobat.paintroid.ui.DrawingSurface;
-import org.catrobat.paintroid.ui.Perspective;
-import org.catrobat.paintroid.ui.TopBar;
-
-import java.io.File;
-
 public class MainActivity extends OptionsMenuActivity {
 
 	public static final String EXTRA_INSTANCE_FROM_CATROBAT = "EXTRA_INSTANCE_FROM_CATROBAT";
@@ -81,7 +82,7 @@ public class MainActivity extends OptionsMenuActivity {
 		ColorPickerDialog.init(this);
 		BrushPickerDialog.init(this);
 		ToolsDialog.init(this);
-		ProgressIntermediateDialog.init(this);
+		IndeterminateProgressDialog.init(this);
 
 		/**
 		 * EXCLUDED PREFERENCES FOR RELEASE /*SharedPreferences
@@ -111,6 +112,9 @@ public class MainActivity extends OptionsMenuActivity {
 		if (extras != null) {
 			catroidPicturePath = extras
 					.getString(getString(R.string.extra_picture_path_catroid));
+
+			Log.d(PaintroidApplication.TAG, "catroidPicturePath: "
+					+ catroidPicturePath);
 		}
 		if (catroidPicturePath != null) {
 			PaintroidApplication.openedFromCatroid = true;
@@ -138,12 +142,37 @@ public class MainActivity extends OptionsMenuActivity {
 				&& catroidPicturePath.length() > 0) {
 			loadBitmapFromUriAndRun(Uri.fromFile(new File(catroidPicturePath)),
 					new RunnableWithBitmap() {
+						@SuppressLint("NewApi")
 						@Override
 						public void run(Bitmap bitmap) {
+							if (!bitmap.hasAlpha()) {
+
+								if (Build.VERSION.SDK_INT > Build.VERSION_CODES.HONEYCOMB) {
+									bitmap.setHasAlpha(true);
+								} else {
+									bitmap = addAlphaChannel(bitmap);
+								}
+							}
 							PaintroidApplication.drawingSurface
 									.resetBitmap(bitmap);
 						}
+
+						private Bitmap addAlphaChannel(Bitmap src) {
+							int width = src.getWidth();
+							int height = src.getHeight();
+							Bitmap dest = Bitmap.createBitmap(width, height,
+									Bitmap.Config.ARGB_8888);
+
+							int[] pixels = new int[width * height];
+							src.getPixels(pixels, 0, width, 0, 0, width, height);
+							dest.setPixels(pixels, 0, width, 0, 0, width,
+									height);
+
+							src.recycle();
+							return dest;
+						}
 					});
+
 		} else {
 			initialiseNewBitmap();
 		}
@@ -184,6 +213,12 @@ public class MainActivity extends OptionsMenuActivity {
 	}
 
 	@Override
+	public void onDetachedFromWindow() {
+		IndeterminateProgressDialog.getInstance().dismiss();
+		super.onDetachedFromWindow();
+	}
+
+	@Override
 	protected void onDestroy() {
 
 		PaintroidApplication.commandManager.resetAndClear();
@@ -195,6 +230,12 @@ public class MainActivity extends OptionsMenuActivity {
 		PaintroidApplication.isPlainImage = true;
 		PaintroidApplication.savedPictureUri = null;
 		PaintroidApplication.saveCopy = false;
+
+		ToolsDialog.getInstance().dismiss();
+		IndeterminateProgressDialog.getInstance().dismiss();
+		ColorPickerDialog.getInstance().dismiss();
+		// BrushPickerDialog.getInstance().dismiss(); // TODO: how can there
+		// ever be a null pointer exception?
 		super.onDestroy();
 	}
 

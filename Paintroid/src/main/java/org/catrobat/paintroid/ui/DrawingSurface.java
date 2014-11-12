@@ -21,7 +21,7 @@ package org.catrobat.paintroid.ui;
 
 import org.catrobat.paintroid.PaintroidApplication;
 import org.catrobat.paintroid.command.Command;
-import org.catrobat.paintroid.dialog.ProgressIntermediateDialog;
+import org.catrobat.paintroid.dialog.IndeterminateProgressDialog;
 import org.catrobat.paintroid.tools.Tool.StateChange;
 import org.catrobat.paintroid.tools.implementation.BaseTool;
 
@@ -34,6 +34,7 @@ import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -63,6 +64,15 @@ public class DrawingSurface extends SurfaceView implements
 		public void run() {
 			SurfaceHolder holder = getHolder();
 			Canvas canvas = null;
+
+            if (Build.VERSION.SDK_INT >= 18) { // TODO: set build flag
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    Log.w(PaintroidApplication.TAG, "DrawingSurface: sleeping thread was interrupted");
+                }
+            }
+
 			synchronized (holder) {
 				try {
 					canvas = holder.lockCanvas();
@@ -109,7 +119,7 @@ public class DrawingSurface extends SurfaceView implements
 						.resetInternalState(StateChange.RESET_INTERNAL_STATE);
 
 				if (!PaintroidApplication.commandManager.hasNextCommand()) {
-					ProgressIntermediateDialog.getInstance().dismiss();
+					IndeterminateProgressDialog.getInstance().dismiss();
 				}
 			}
 
