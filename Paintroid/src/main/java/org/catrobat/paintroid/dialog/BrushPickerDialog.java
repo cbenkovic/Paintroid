@@ -98,17 +98,8 @@ public final class BrushPickerDialog extends DialogFragment implements
 		return instance;
 	}
 
-    /*
-    private void setContext(Context context){
-        mBrushChangedListener = new ArrayList<BrushPickerDialog.OnBrushChangedListener>();
-        mContext = context;
-    }
-*/
 	public static void init(Context context) {
-
 		instance = new BrushPickerDialog(context);
-        //instance = new BrushPickerDialog();
-        //setContext(context);
 	}
 
 	public void setCurrentPaint(Paint currentPaint) {
