@@ -72,7 +72,7 @@ public class DrawingSurface extends SurfaceView implements
                     Log.w(PaintroidApplication.TAG, "DrawingSurface: sleeping thread was interrupted");
                 }
             }
-            
+
 			synchronized (holder) {
 				try {
 					canvas = holder.lockCanvas();
