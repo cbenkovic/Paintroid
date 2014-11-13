@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\P\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a80368c05e549f70f5df29ed7af053dcbae64021.jar"
+        jar="C:\Users\Alex\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\P\Paintroid\Paintroid\build\intermediates\pre-dexed\debug\classes-6342dd2dae6a1e496df3d25327c5026b69254441.jar"
+        jar="C:\Users\Alex\Documents\Studium Informatik\6. Semester\Bachelorarbeit Android\P\Paintroid\Paintroid\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="af64527b748983a75de9c0756e9768b56b240a49"/>
+
+</pre-dex-items>
