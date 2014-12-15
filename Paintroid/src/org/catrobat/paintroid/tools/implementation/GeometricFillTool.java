@@ -36,6 +36,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.util.Log;
 
 public class GeometricFillTool extends BaseToolWithRectangleShape {
 
@@ -89,6 +90,12 @@ public class GeometricFillTool extends BaseToolWithRectangleShape {
 	@Override
 	public void changePaintColor(int color) {
 		super.changePaintColor(color);
+
+        if (!mBoxIsReady) {
+            Log.d("boxSize", "mboxWidth=" + mBoxWidth + " mBoxHeight=" + mBoxHeight + ", mBox is not ready yet!!");
+            Thread.yield();
+        }
+
 		createAndSetBitmap(PaintroidApplication.drawingSurface);
 	}
 

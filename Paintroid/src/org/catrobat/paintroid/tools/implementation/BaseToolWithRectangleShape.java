@@ -90,6 +90,7 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 	protected FloatingBoxAction mCurrentAction;
 	protected RotatePosition mRotatePosition;
 	protected Bitmap mDrawingBitmap;
+    protected boolean mBoxIsReady = false;
 
 	private boolean mRespectImageBounds;
 	private boolean mRotationEnabled;
@@ -140,6 +141,7 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 			mBoxHeight = (PaintroidApplication.drawingSurface.getBitmapHeight() * MAXIMUM_BORDER_RATIO);
 			mBoxWidth = (PaintroidApplication.drawingSurface.getBitmapWidth() * MAXIMUM_BORDER_RATIO);
 		}
+        mBoxIsReady = true;
 
 		mRotatePosition = RotatePosition.TOP_LEFT;
 		mResizeAction = ResizeAction.NONE;
