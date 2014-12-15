@@ -223,8 +223,8 @@ public class MainActivity extends OptionsMenuActivity {
 
 		PaintroidApplication.commandManager.resetAndClear();
 		PaintroidApplication.drawingSurface.recycleBitmap();
-		ColorPickerDialog.getInstance().setInitialColor(
-				getResources().getColor(R.color.color_chooser_black));
+//		ColorPickerDialog.getInstance().setInitialColor(
+//				getResources().getColor(R.color.color_chooser_black));
 		PaintroidApplication.currentTool.changePaintStrokeCap(Cap.ROUND);
 		PaintroidApplication.currentTool.changePaintStrokeWidth(25);
 		PaintroidApplication.isPlainImage = true;
