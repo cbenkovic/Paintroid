@@ -29,6 +29,7 @@ import org.catrobat.paintroid.tools.ToolType;
 import org.catrobat.paintroid.ui.DrawingSurface;
 import org.catrobat.paintroid.ui.TopBar.ToolButtonIDs;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -90,12 +91,12 @@ public class GeometricFillTool extends BaseToolWithRectangleShape {
 	@Override
 	public void changePaintColor(int color) {
 		super.changePaintColor(color);
-/*
+
         if (!mBoxIsReady) {
             Log.d("boxSize", "mboxWidth=" + mBoxWidth + " mBoxHeight=" + mBoxHeight + ", mBox is not ready yet!!");
             Thread.yield();
         }
-*/
+
 		createAndSetBitmap(PaintroidApplication.drawingSurface);
 	}
 
