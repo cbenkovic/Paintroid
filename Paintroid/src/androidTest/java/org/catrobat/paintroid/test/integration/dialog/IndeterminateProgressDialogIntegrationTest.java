@@ -52,8 +52,9 @@ public class IndeterminateProgressDialogIntegrationTest extends BaseIntegrationT
 		assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
 
 		mSolo.clickOnScreen(point.x, point.y);
-		assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
-        //assertTrue("Progress Dialog is not showing", mSolo.waitForDialogToOpen());
+        //mSolo.sleep(600);
+		//assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
+        assertTrue("Progress Dialog is not showing", mSolo.waitForDialogToOpen());
 
 	}
 }
