@@ -191,8 +191,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
         mSolo.sleep(SHORT_SLEEP);
         mSolo.clickOnText(mSolo.getString(R.string.menu_save_image));
 
-
-		assertTrue("ProgressDialog not showing", mSolo.waitForDialogToOpen(SHORT_TIMEOUT));
+		assertTrue("ProgressDialog not showing", mSolo.waitForDialogToOpen(550));
 		mSolo.waitForDialogToClose();
 
 		filenames.add(PaintroidApplication.savedPictureUri.toString());

@@ -186,6 +186,7 @@ public class ToolOnBackPressedTests extends BaseIntegrationTestClass {
 
 		mSolo.waitForText(mSolo.getString(R.string.discard_button_text));
 		mSolo.clickOnButton(mSolo.getString(R.string.discard_button_text));
+        //mSolo.sleep(500);
 		assertTrue("Exit dialog not closing", mSolo.waitForDialogToClose());
 		assertEquals("Application finished, buttons left", mSolo.getCurrentViews(Button.class).size(), 0);
 
