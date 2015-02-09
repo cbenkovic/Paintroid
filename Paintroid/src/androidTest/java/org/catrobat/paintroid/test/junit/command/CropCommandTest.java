@@ -37,6 +37,7 @@ public class CropCommandTest extends CommandTestSetup {
 	private int mCropCoordinateYTop;
 	private int mCropCoordinateXRight;
 	private int mCropCoordinateYBottom;
+    private int mCropCoordinate;
 
 	@Override
 	@Before
