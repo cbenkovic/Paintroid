@@ -37,25 +37,22 @@ public class IndeterminateProgressDialogIntegrationTest extends BaseIntegrationT
 	}
 
     @FlakyTest(tolerance = 3)
-	public void testDialogIsNotCancelable() {
+	public void testDialogIsNotCancelable() throws Throwable {
 
-		PointF point = new PointF(mCurrentDrawingSurfaceBitmap.getWidth() / 2,
-				mCurrentDrawingSurfaceBitmap.getHeight() / 2);
+        PointF point = new PointF(mCurrentDrawingSurfaceBitmap.getWidth() / 4, mCurrentDrawingSurfaceBitmap.getHeight() / 4);
 
-		mSolo.clickOnScreen(point.x, point.y);
+        runTestOnUiThread(new Runnable() {
+            public void run() {
+                //Thread.yield();
+                IndeterminateProgressDialog.getInstance().show();
+            }
 
-		selectTool(ToolType.FILL);
+        });
 
-		PaintroidApplication.currentTool.changePaintColor(Color.BLUE);
-
-		point = new PointF(mCurrentDrawingSurfaceBitmap.getWidth() / 4, mCurrentDrawingSurfaceBitmap.getHeight() / 4);
-
-		mSolo.clickOnScreen(point.x, point.y);
-
-		mSolo.clickOnScreen(point.x, point.y);
+        mSolo.waitForDialogToOpen();
+        mSolo.clickOnScreen(point.x, point.y);
         assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
-        //assertTrue("Progress Dialog is not showing", mSolo.waitForDialogToOpen());
 
 
-	}
+    }
 }
