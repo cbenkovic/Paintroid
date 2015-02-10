@@ -67,7 +67,7 @@ public class DrawingSurface extends SurfaceView implements
 
             if (Build.VERSION.SDK_INT >= 18) { // TODO: set build flag
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     Log.w(PaintroidApplication.TAG, "DrawingSurface: sleeping thread was interrupted");
                 }
