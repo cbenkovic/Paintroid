@@ -28,6 +28,7 @@ import org.catrobat.paintroid.ui.DrawingSurface;
 
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 import android.view.KeyEvent;
 
 public class FullscreenIntegrationTest extends BaseIntegrationTestClass {
@@ -60,6 +61,7 @@ public class FullscreenIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("pixel should be black", Color.BLACK, pixelColor);
 	}
 
+    @FlakyTest(tolerance = 2)
 	public void testHideStatusbar() {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
 

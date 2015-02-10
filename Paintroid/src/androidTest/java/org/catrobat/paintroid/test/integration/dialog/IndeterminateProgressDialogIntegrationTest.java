@@ -19,6 +19,7 @@
 
 package org.catrobat.paintroid.test.integration.dialog;
 
+import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.PaintroidApplication;
 import org.catrobat.paintroid.dialog.IndeterminateProgressDialog;
 import org.catrobat.paintroid.test.integration.BaseIntegrationTestClass;
@@ -51,12 +52,10 @@ public class IndeterminateProgressDialogIntegrationTest extends BaseIntegrationT
 
 		mSolo.clickOnScreen(point.x, point.y);
 
-		assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
-
 		mSolo.clickOnScreen(point.x, point.y);
-        //mSolo.sleep(600);
-		//assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
-        assertTrue("Progress Dialog is not showing", mSolo.waitForDialogToOpen());
+        assertTrue("Progress Dialog is not showing", IndeterminateProgressDialog.getInstance().isShowing());
+        //assertTrue("Progress Dialog is not showing", mSolo.waitForDialogToOpen());
+
 
 	}
 }
