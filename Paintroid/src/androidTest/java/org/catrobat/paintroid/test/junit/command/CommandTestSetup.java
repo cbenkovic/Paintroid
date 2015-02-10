@@ -35,7 +35,7 @@ import android.graphics.Paint.Cap;
 import android.graphics.PointF;
 import android.test.AndroidTestCase;
 
-public class CommandTestSetup extends AndroidTestCase {
+public abstract class CommandTestSetup extends AndroidTestCase {
 
 	protected Command mCommandUnderTest;
 	protected Command mCommandUnderTestNull;// can be used to pass null to constructor

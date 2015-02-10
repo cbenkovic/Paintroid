@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import org.catrobat.paintroid.R;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -40,6 +41,7 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+@SuppressLint("ValidFragment")
 public final class BrushPickerDialog extends DialogFragment implements
 		OnClickListener, DialogInterface.OnClickListener {
 
@@ -85,7 +87,8 @@ public final class BrushPickerDialog extends DialogFragment implements
 		}
 	}
 
-	private BrushPickerDialog(Context context) {
+	@SuppressLint("ValidFragment")
+    private BrushPickerDialog(Context context) {
 
 		mBrushChangedListener = new ArrayList<BrushPickerDialog.OnBrushChangedListener>();
 		mContext = context;
