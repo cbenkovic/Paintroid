@@ -32,6 +32,7 @@ import org.junit.Test;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.test.FlakyTest;
 
 public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
@@ -52,7 +53,7 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		super.tearDown();
 	}
 
-	@Test
+    @FlakyTest(tolerance = 2)
 	public void testRotationOfOnePixelTurnLeft() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 

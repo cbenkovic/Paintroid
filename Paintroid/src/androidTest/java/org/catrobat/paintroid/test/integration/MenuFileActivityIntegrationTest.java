@@ -25,6 +25,7 @@ import android.graphics.Color;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Environment;
+import android.test.FlakyTest;
 import android.util.Log;
 
 import org.catrobat.paintroid.FileIO;
@@ -247,6 +248,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.goBack();
 	}
 
+    @FlakyTest(tolerance = 2)
 	public void testSaveLoadedImage() throws URISyntaxException, IOException {
         File tmpFile = getImageFile("tmpFile");
 
@@ -273,7 +275,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
         long newlength = tmpFile.length();
         long lastmodified = tmpFile.lastModified();
         assertNotSame("File is still the same", oldlength, newlength);
-        assertNotSame("File not currently moified", firstmodified, lastmodified);
+        assertNotSame("File not currently modified", firstmodified, lastmodified);
 	}
 
 	private File getImageFile(String filename) {

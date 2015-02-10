@@ -42,6 +42,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 
 public class StampToolIntegrationTest extends BaseIntegrationTestClass {
 
@@ -295,7 +296,7 @@ public class StampToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
-	@Test
+    @FlakyTest(tolerance = 2)
 	public void testCopyPixel() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 

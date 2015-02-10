@@ -26,6 +26,7 @@ import org.catrobat.paintroid.tools.ToolType;
 
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 
 public class IndeterminateProgressDialogIntegrationTest extends BaseIntegrationTestClass {
 
@@ -34,6 +35,7 @@ public class IndeterminateProgressDialogIntegrationTest extends BaseIntegrationT
 		// TODO Auto-generated constructor stub
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testDialogIsNotCancelable() {
 
 		PointF point = new PointF(mCurrentDrawingSurfaceBitmap.getWidth() / 2,
