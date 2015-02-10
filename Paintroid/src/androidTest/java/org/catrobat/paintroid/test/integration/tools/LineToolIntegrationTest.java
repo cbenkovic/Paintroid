@@ -122,7 +122,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
 
 		mSolo.drag(clickCoordinateX - HALF_LINE_LENGTH, clickCoordinateX + HALF_LINE_LENGTH, clickCoordinateY
 				+ HALF_LINE_LENGTH, clickCoordinateY - HALF_LINE_LENGTH, 10);
-		mSolo.sleep(1000);
+		mSolo.sleep(SLEEP_TIME);
 
 		color = PaintroidApplication.drawingSurface.getPixel(pointOnCanvas);
 		assertEquals("Color after drawing line has to be black", Color.BLACK, color);
