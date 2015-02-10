@@ -32,6 +32,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
+import android.test.FlakyTest;
 import android.widget.ImageButton;
 
 public class UndoRedoIntegrationTest extends BaseIntegrationTestClass {
@@ -205,7 +206,7 @@ public class UndoRedoIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("Scale should stay the same after undo", PaintroidApplication.perspective.getScale(), scale);
 	}
 
-	// @FlakyTest(tolerance = 3)
+	@FlakyTest(tolerance = 3)
 	public void testUndoProgressDialogIsShowing() {
 
 		ImageButton undoButton = (ImageButton) mSolo.getView(R.id.btn_top_undo);
@@ -216,7 +217,6 @@ public class UndoRedoIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.waitForView(undoButton);
 		mSolo.clickOnView(undoButton);
 
-		// assertProgressDialogShowing();
 		mSolo.waitForDialogToClose();
 		assertFalse("Progress Dialog is still showing", IndeterminateProgressDialog.getInstance().isShowing());
 	}
@@ -242,25 +242,9 @@ public class UndoRedoIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.waitForView(redoButton);
 		mSolo.clickOnView(redoButton);
 
-		// assertProgressDialogShowing(); // redo is too fast, assert fails
 		mSolo.waitForDialogToClose();
 		assertFalse("Progress Dialog is still showing", IndeterminateProgressDialog.getInstance().isShowing());
 
 	}
 
-	// @Override
-	// protected boolean hasProgressDialogFinished(int numberOfTries) {
-	// mSolo.sleep(500);
-	// Dialog progressDialog = ProgressIntermediateDialog.getInstance();
-	//
-	// int waitForDialogSteps = 0;
-	// final int MAX_TRIES = 200;
-	// for (; waitForDialogSteps < MAX_TRIES; waitForDialogSteps++) {
-	// if (progressDialog.isShowing())
-	// mSolo.sleep(100);
-	// else
-	// break;
-	// }
-	// return waitForDialogSteps < MAX_TRIES ? true : false;
-	// }
 }
