@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.PointF;
 import android.os.Environment;
+import android.test.FlakyTest;
 
 import com.robotium.solo.Solo;
 
@@ -46,7 +47,7 @@ public class ActivityOpenedFromPocketCodeTest extends BaseIntegrationTestClass {
 		super.tearDown();
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testSave() {
 		PointF pointOnScreen = new PointF(mScreenWidth / 2, mScreenHeight / 2);
 		mSolo.clickOnScreen(pointOnScreen.x, pointOnScreen.y);
