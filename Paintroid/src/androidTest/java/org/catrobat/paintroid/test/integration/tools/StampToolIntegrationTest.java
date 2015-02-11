@@ -164,6 +164,7 @@ public class StampToolIntegrationTest extends BaseIntegrationTestClass {
         mSolo.waitForDialogToClose();
 		mSolo.clickOnScreen(surfaceCenterPoint.x, surfaceCenterPoint.y);
         mSolo.waitForDialogToClose();
+        mSolo.sleep(SHORT_TIMEOUT);
 		assertEquals("Wrong icon for parameter button 1", R.drawable.icon_menu_stamp_paste,
 				stampTool.getAttributeButtonResource(ToolButtonIDs.BUTTON_ID_PARAMETER_BOTTOM_1));
 		assertEquals("Wrong icon for parameter button 2", R.drawable.icon_menu_stamp_clear,

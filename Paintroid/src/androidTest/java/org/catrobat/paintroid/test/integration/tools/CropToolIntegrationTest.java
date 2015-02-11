@@ -40,6 +40,8 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.test.FlakyTest;
 
+import com.robotium.solo.Condition;
+
 public class CropToolIntegrationTest extends BaseIntegrationTestClass {
 
 	private final int CROPPING_SLEEP_BETWEEN_FINISH_CHECK = 500;
@@ -254,6 +256,15 @@ public class CropToolIntegrationTest extends BaseIntegrationTestClass {
 	@Test
 	public void testCenterBitmapAfterCropAndUndo() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException, InterruptedException {
+
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCurrentDrawingSurfaceBitmap.isRecycled();
+            }
+        }, 5000);
+
+
 		int originalWidth = mCurrentDrawingSurfaceBitmap.getWidth();
 		int originalHeight = mCurrentDrawingSurfaceBitmap.getHeight();
 
