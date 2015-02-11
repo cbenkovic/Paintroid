@@ -116,7 +116,7 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testRotationOfOnePixelTurnRight() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 		Point topLeftPixel = new Point(0, 0);
@@ -177,7 +177,7 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testBitmapSizeAfterRotation() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 		selectTool(ToolType.ROTATE);
@@ -307,7 +307,7 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testIfBitmapIsCenteredAfterRotation() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 
