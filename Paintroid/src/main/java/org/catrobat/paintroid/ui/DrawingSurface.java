@@ -64,7 +64,7 @@ public class DrawingSurface extends SurfaceView implements
 		public void run() {
 			SurfaceHolder holder = getHolder();
 			Canvas canvas = null;
-
+/*
             if (Build.VERSION.SDK_INT >= 18) { // TODO: set build flag
                 try {
                     Thread.sleep(70);
@@ -73,7 +73,7 @@ public class DrawingSurface extends SurfaceView implements
                     Log.w(PaintroidApplication.TAG, "DrawingSurface: sleeping thread was interrupted");
                 }
             }
-
+*/
 			synchronized (holder) {
 				try {
 					canvas = holder.lockCanvas();
