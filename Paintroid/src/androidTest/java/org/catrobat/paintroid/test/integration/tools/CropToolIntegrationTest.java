@@ -257,14 +257,6 @@ public class CropToolIntegrationTest extends BaseIntegrationTestClass {
 	public void testCenterBitmapAfterCropAndUndo() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException, InterruptedException {
 
-        mSolo.waitForCondition(new Condition() {
-            @Override
-            public boolean isSatisfied() {
-                return !mCurrentDrawingSurfaceBitmap.isRecycled();
-            }
-        }, 5000);
-
-
 		int originalWidth = mCurrentDrawingSurfaceBitmap.getWidth();
 		int originalHeight = mCurrentDrawingSurfaceBitmap.getHeight();
 
@@ -546,6 +538,13 @@ public class CropToolIntegrationTest extends BaseIntegrationTestClass {
 		for (int indexColorArray = 0; indexColorArray < pixelsColorArray.length; indexColorArray++) {
 			pixelsColorArray[indexColorArray] = Color.BLACK;
 		}
+
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCurrentDrawingSurfaceBitmap.isRecycled();
+            }
+        }, 5000);
 
 		mCurrentDrawingSurfaceBitmap.setPixels(pixelsColorArray, 0, mLineLength, mHorizontalLineStartX,
 				horizontalLineStartY, mLineLength, lineWidth);

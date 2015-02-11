@@ -86,8 +86,15 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 				- actionbarHeight + 5);
         mSolo.sleep(SHORT_TIMEOUT);
 
-		Bitmap workingBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
+		final Bitmap workingBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, DRAWINGSURFACE_MEMBER_BITMAP);
+
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !workingBitmap.isRecycled();
+            }
+        }, 5000);
 
 		int width = workingBitmap.getWidth();
 		int height = workingBitmap.getHeight();

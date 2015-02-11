@@ -35,6 +35,7 @@ import org.junit.Test;
 
 import android.graphics.Bitmap;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 import android.widget.Button;
 import android.widget.TableRow;
 
@@ -88,7 +89,7 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		assertNotNull("Position should not be NULL", rectPosition);
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testFilledRectIsDrawnOnBitmap() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 
@@ -106,9 +107,9 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		int colorBeforeDrawing = PaintroidApplication.drawingSurface.getPixel(pointOnBitmap);
 		mSolo.clickOnScreen(pointOnScreen.x, pointOnScreen.y); // to draw rectangle
 
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_TIMEOUT);
 		mSolo.goBack();
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_TIMEOUT);
 
 		int colorAfterDrawing = PaintroidApplication.drawingSurface.getPixel(pointOnBitmap);
 		int colorPickerColor = mTopBar.getCurrentTool().getDrawPaint().getColor();
@@ -116,13 +117,13 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 				colorAfterDrawing);
 
 		mSolo.clickOnView(mButtonTopUndo);
-		mSolo.sleep(1000);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		int colorAfterUndo = PaintroidApplication.drawingSurface.getPixel(pointOnBitmap);
 		assertEquals(colorBeforeDrawing, colorAfterUndo);
 
 		mSolo.clickOnView(mButtonTopRedo);
-		mSolo.sleep(1000);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		int colorAfterRedo = PaintroidApplication.drawingSurface.getPixel(pointOnBitmap);
 		assertEquals(colorPickerColor, colorAfterRedo);
@@ -144,9 +145,9 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		int colorBeforeDrawing = PaintroidApplication.drawingSurface.getPixel(pointUnderTest);
 		mSolo.clickOnScreen(centerPointTool.x - 1, centerPointTool.y - 1);
 
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_SLEEP);
 		mSolo.goBack();
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_SLEEP);
 
 		int colorPickerColor = mTopBar.getCurrentTool().getDrawPaint().getColor();
 
@@ -156,13 +157,13 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 				colorAfterDrawing);
 
 		mSolo.clickOnView(mButtonTopUndo);
-		mSolo.sleep(1000);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		int colorAfterUndo = PaintroidApplication.drawingSurface.getPixel(pointUnderTest);
 		assertEquals(colorBeforeDrawing, colorAfterUndo);
 
 		mSolo.clickOnView(mButtonTopRedo);
-		mSolo.sleep(1000);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		int colorAfterRedo = PaintroidApplication.drawingSurface.getPixel(pointUnderTest);
 		assertEquals(colorPickerColor, colorAfterRedo);
@@ -191,7 +192,7 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		Button colorButton = mSolo.getButton(5);
 		assertTrue(colorButton.getParent() instanceof TableRow);
 		mSolo.clickOnButton(5);
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_SLEEP);
 		mSolo.clickOnButton(getActivity().getResources().getString(R.string.done));
 
 		int colorPickerColorAfterChange = mTopBar.getCurrentTool().getDrawPaint().getColor();
@@ -234,9 +235,9 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		Button colorButton = mSolo.getButton(5);
 		assertTrue(colorButton.getParent() instanceof TableRow);
 		mSolo.clickOnButton(5);
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_SLEEP);
 		mSolo.clickOnButton(getActivity().getResources().getString(R.string.done));
-		mSolo.sleep(50);
+		mSolo.sleep(SHORT_SLEEP);
 
 		int colorInRectangleToolAfter = mTopBar.getCurrentTool().getDrawPaint().getColor();
 		Bitmap drawingBitmapAfter = (Bitmap) PrivateAccess.getMemberValue(BaseToolWithRectangleShape.class,

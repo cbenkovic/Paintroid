@@ -297,7 +297,7 @@ public class StampToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
-    @FlakyTest(tolerance = 2)
+    @FlakyTest(tolerance = 3)
 	public void testCopyPixel() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 
@@ -316,7 +316,10 @@ public class StampToolIntegrationTest extends BaseIntegrationTestClass {
 
 		PointF pixelCoordinateToControlColor = new PointF(surfaceCenterPoint.x, surfaceCenterPoint.y - Y_CLICK_OFFSET);
 		PointF surfacePoint = Utils.getSurfacePointFromScreenPoint(pixelCoordinateToControlColor);
-		int pixelToControl = PaintroidApplication.drawingSurface.getPixel(PaintroidApplication.perspective
+
+        mSolo.sleep(MEDIUM_TIMEOUT);
+
+        int pixelToControl = PaintroidApplication.drawingSurface.getPixel(PaintroidApplication.perspective
 				.getCanvasPointFromSurfacePoint(surfacePoint));
 
 		assertEquals("First Pixel not Black after using Stamp for copying", Color.BLACK, pixelToControl);

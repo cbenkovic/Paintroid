@@ -55,6 +55,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
         super.tearDown();
     }
 
+    @FlakyTest(tolerance = 3)
 	public void testVerticalLineColor()  {
 
 		// TODO: Refactor tests (lot of copy paste code...)
@@ -76,7 +77,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.drag(clickCoordinateX, clickCoordinateX, clickCoordinateY - HALF_LINE_LENGTH, clickCoordinateY
 				+ HALF_LINE_LENGTH, 10);
 
-		mSolo.sleep(SLEEP_TIME);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		color = PaintroidApplication.drawingSurface.getPixel(pointOnCanvas);
 		assertEquals("Color after drawing line has to be black", Color.BLACK, color);

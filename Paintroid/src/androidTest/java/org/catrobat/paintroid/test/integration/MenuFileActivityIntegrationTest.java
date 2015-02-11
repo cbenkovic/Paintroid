@@ -269,7 +269,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
         //mSolo.clickOnMenuItem(mSolo.getString(R.string.menu_save_image));
         mSolo.sendKey(mSolo.MENU);
-        mSolo.waitForDialogToOpen(MEDIUM_TIMEOUT);
+        mSolo.waitForDialogToOpen(TIMEOUT);
         mSolo.clickOnText(mSolo.getString(R.string.menu_save_image));
 
         mSolo.waitForDialogToOpen(MEDIUM_TIMEOUT);
