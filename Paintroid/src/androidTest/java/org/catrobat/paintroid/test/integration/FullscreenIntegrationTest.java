@@ -46,6 +46,7 @@ public class FullscreenIntegrationTest extends BaseIntegrationTestClass {
 		PaintroidApplication.currentTool.changePaintStrokeWidth(500);
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testHideToolbar() {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
 
@@ -56,12 +57,12 @@ public class FullscreenIntegrationTest extends BaseIntegrationTestClass {
 		PointF canvasPoint = PaintroidApplication.perspective.getCanvasPointFromSurfacePoint(screenPoint);
 
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
-		mSolo.sleep(SHORT_TIMEOUT);
+		mSolo.sleep(500);
 		int pixelColor = PaintroidApplication.drawingSurface.getPixel(canvasPoint);
 		assertEquals("pixel should be black", Color.BLACK, pixelColor);
 	}
 
-    @FlakyTest(tolerance = 2)
+    @FlakyTest(tolerance = 3)
 	public void testHideStatusbar() {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
 

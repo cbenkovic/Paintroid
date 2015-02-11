@@ -167,6 +167,8 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
 		String nameRessourceAsText = mSolo.getString(nameRessourceID);
 		assertNotNull("Name Ressource is null", nameRessourceAsText);
 
+        mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT);
+
 		mSolo.clickOnView(mMenuBottomTool);
 		Log.i(PaintroidApplication.TAG, "clicked on bottom button tool");
 		assertTrue("Tools dialog not visible",
