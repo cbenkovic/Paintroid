@@ -36,6 +36,8 @@ import android.graphics.PointF;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.robotium.solo.Condition;
+
 public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 	private static final String DRAWINGSURFACE_MEMBER_BITMAP = "mWorkingBitmap";
 
@@ -51,9 +53,15 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 		super();
 	}
 
-	@Test
 	public void testBorderAfterMove() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
+
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCurrentDrawingSurfaceBitmap.isRecycled();
+            }
+        }, 5000);
 
 		float actionbarHeight = Utils.getActionbarHeight();
 		float statusbarHeight = getStatusBarHeight(getActivity());

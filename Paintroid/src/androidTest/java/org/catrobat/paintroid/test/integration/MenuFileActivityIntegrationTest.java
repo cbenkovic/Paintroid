@@ -250,7 +250,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.goBack();
 	}
 
-    @FlakyTest(tolerance = 2)
+    @FlakyTest(tolerance = 3)
 	public void testSaveLoadedImage() throws URISyntaxException, IOException {
         File tmpFile = getImageFile("tmpFile");
 
@@ -265,14 +265,14 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
         PointF screenPoint = new PointF(mScreenWidth / 2, mScreenHeight / 2);
 
         mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
-        mSolo.sleep(SHORT_TIMEOUT);
+        mSolo.sleep(MEDIUM_TIMEOUT);
 
         //mSolo.clickOnMenuItem(mSolo.getString(R.string.menu_save_image));
         mSolo.sendKey(mSolo.MENU);
-        mSolo.waitForDialogToOpen(SHORT_TIMEOUT);
+        mSolo.waitForDialogToOpen(MEDIUM_TIMEOUT);
         mSolo.clickOnText(mSolo.getString(R.string.menu_save_image));
 
-        mSolo.waitForDialogToOpen(SHORT_TIMEOUT);
+        mSolo.waitForDialogToOpen(MEDIUM_TIMEOUT);
         mSolo.waitForDialogToClose();
 
         long newlength = tmpFile.length();
