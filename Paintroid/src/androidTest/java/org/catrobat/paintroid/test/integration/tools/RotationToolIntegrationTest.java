@@ -64,7 +64,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		selectTool(ToolType.ROTATE);
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -76,7 +77,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// second rotation
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -88,7 +90,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// third rotation
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -100,7 +103,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// fully rotated
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -121,7 +125,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		selectTool(ToolType.ROTATE);
 
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -133,7 +138,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// second rotation
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -145,7 +151,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// third rotation
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -157,7 +164,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// fully rotated
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -178,7 +186,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		int bitmapHeightBefore = mCurrentDrawingSurfaceBitmap.getHeight();
 
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -194,7 +203,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		bitmapHeightBefore = mCurrentDrawingSurfaceBitmap.getHeight();
 
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -210,7 +220,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		bitmapHeightBefore = mCurrentDrawingSurfaceBitmap.getHeight();
 
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+		//mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -226,7 +237,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		bitmapHeightBefore = mCurrentDrawingSurfaceBitmap.getHeight();
 
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -255,7 +267,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		mCurrentDrawingSurfaceBitmap.setPixel(0, mCurrentDrawingSurfaceBitmap.getHeight() - 1, Color.GREEN);
 
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -277,7 +290,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 		// rotate back
 
 		mSolo.clickOnView(mMenuBottomParameter2);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		mCurrentDrawingSurfaceBitmap = (Bitmap) PrivateAccess.getMemberValue(DrawingSurface.class,
 				PaintroidApplication.drawingSurface, "mWorkingBitmap");
@@ -310,7 +324,8 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 		selectTool(ToolType.ROTATE);
 		mSolo.clickOnView(mMenuBottomParameter1);
-		mSolo.sleep(500);
+        //mSolo.sleep(500);
+        mSolo.waitForDialogToClose();
 
 		checkPoint = Utils.convertFromCanvasToScreen(topLeftPoint, PaintroidApplication.perspective);
 		assertTrue("Checkpoint is not on the left side of the center", checkPoint.x < mScreenWidth / 2);

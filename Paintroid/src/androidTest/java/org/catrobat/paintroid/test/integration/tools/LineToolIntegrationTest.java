@@ -39,6 +39,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
 
 	protected static final int HALF_LINE_LENGTH = 25;
 	private final static int SLEEP_TIME = 500;
+    private final static int MEDIUM_TIMEOUT = 1000;
 
 	public LineToolIntegrationTest() throws Exception {
 		super();
@@ -106,6 +107,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testDiagonaleLineColor() {
 		selectTool(ToolType.LINE);
         mSolo.waitForDialogToClose(SHORT_TIMEOUT);
@@ -122,7 +124,7 @@ public class LineToolIntegrationTest extends BaseIntegrationTestClass {
 
 		mSolo.drag(clickCoordinateX - HALF_LINE_LENGTH, clickCoordinateX + HALF_LINE_LENGTH, clickCoordinateY
 				+ HALF_LINE_LENGTH, clickCoordinateY - HALF_LINE_LENGTH, 10);
-		mSolo.sleep(SLEEP_TIME);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		color = PaintroidApplication.drawingSurface.getPixel(pointOnCanvas);
 		assertEquals("Color after drawing line has to be black", Color.BLACK, color);

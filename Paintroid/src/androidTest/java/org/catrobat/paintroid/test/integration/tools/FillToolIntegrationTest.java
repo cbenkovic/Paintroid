@@ -31,6 +31,7 @@ import org.junit.Before;
 
 import android.graphics.PointF;
 import android.net.Uri;
+import android.test.FlakyTest;
 import android.widget.Button;
 import android.widget.TableRow;
 
@@ -96,6 +97,7 @@ public class FillToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("Pixel color should be the same", colorToFill, colorAfterFill);
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testBitmapIsFilled() throws InterruptedException, SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
@@ -110,8 +112,7 @@ public class FillToolIntegrationTest extends BaseIntegrationTestClass {
 		PointF checkCanvasPoint = Utils.getCanvasPointFromScreenPoint(checkScreenPoint);
 
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y); // to fill the bitmap
-		mSolo.sleep(SHORT_SLEEP);
-		mSolo.waitForDialogToClose(SHORT_TIMEOUT);
+		mSolo.waitForDialogToClose();
 		int colorAfterFill = PaintroidApplication.drawingSurface.getPixel(checkCanvasPoint);
 
 		assertEquals("Pixel color should be the same", colorToFill, colorAfterFill);
@@ -141,6 +142,7 @@ public class FillToolIntegrationTest extends BaseIntegrationTestClass {
 		assertFalse("Pixel color should not be the same", (colorToFill == colorAfterFill));
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testOnlyFillInnerArea() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 
@@ -180,9 +182,9 @@ public class FillToolIntegrationTest extends BaseIntegrationTestClass {
 		Button colorButton = mSolo.getButton(5);
 		assertTrue(colorButton.getParent() instanceof TableRow);
 		mSolo.clickOnButton(5);
-		mSolo.sleep(SHORT_SLEEP);
+		mSolo.sleep(SHORT_TIMEOUT);
 		mSolo.clickOnButton(getActivity().getResources().getString(R.string.done));
-		mSolo.waitForDialogToClose(SHORT_TIMEOUT);
+		mSolo.waitForDialogToClose();
 
 		int colorToFill = PaintroidApplication.currentTool.getDrawPaint().getColor();
 		assertFalse(colorToDrawBorder == colorToFill);
@@ -190,8 +192,7 @@ public class FillToolIntegrationTest extends BaseIntegrationTestClass {
 
 		// to fill the bitmap
 		mSolo.clickOnScreen(clickScreenPoint.x, clickScreenPoint.y);
-		mSolo.sleep(SHORT_SLEEP);
-		mSolo.waitForDialogToClose(TIMEOUT);
+		mSolo.waitForDialogToClose();
 
 		int colorAfterFill = PaintroidApplication.drawingSurface.getPixel(checkCanvasPoint);
 		assertEquals("Pixel color should be the same", colorToFill, colorAfterFill);

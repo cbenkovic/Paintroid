@@ -268,6 +268,7 @@ public class CropToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("Canvas and screen bottomright coordinates are not the same ", bottomrightCanvasPoint,
 				originalBottomrightScreenPoint);
 
+
 		drawPlus();
 		standardAutoCrop();
 		mSolo.clickOnView(mMenuBottomParameter2);

@@ -146,6 +146,7 @@ public class UndoRedoIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("Scale should stay the same after undo", PaintroidApplication.perspective.getScale(), scale);
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testPreserveZoomAndMoveAfterRedo() throws SecurityException, NoSuchFieldException,
 			IllegalAccessException {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));

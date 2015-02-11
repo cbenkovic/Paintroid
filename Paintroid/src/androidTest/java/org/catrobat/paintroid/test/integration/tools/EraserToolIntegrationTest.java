@@ -36,6 +36,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -72,6 +73,7 @@ public class EraserToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("Pixel should still be transparent", Color.TRANSPARENT, colorAfterErase);
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testErase() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
@@ -88,7 +90,7 @@ public class EraserToolIntegrationTest extends BaseIntegrationTestClass {
 		selectTool(ToolType.ERASER);
 
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
-		mSolo.sleep(SHORT_SLEEP);
+		mSolo.sleep(SHORT_TIMEOUT);
 
 		int colorAfterErase = PaintroidApplication.drawingSurface.getPixel(canvasPoint);
 		assertEquals("Brushing after erase should be transparent", Color.TRANSPARENT, colorAfterErase);
@@ -130,6 +132,7 @@ public class EraserToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals("After erasing, pixel should be transparent again", Color.TRANSPARENT, colorAfterErase);
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testSwitchingBetweenBrushAndEraserAndMoveTool() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
 
@@ -147,7 +150,7 @@ public class EraserToolIntegrationTest extends BaseIntegrationTestClass {
 		selectTool(ToolType.ERASER);
 
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
-		mSolo.sleep(SHORT_SLEEP);
+		mSolo.sleep(SHORT_TIMEOUT);
 		int colorAfterErase = PaintroidApplication.drawingSurface.getPixel(canvasPoint);
 		assertEquals("After erasing, pixel should be transparent again", Color.TRANSPARENT, colorAfterErase);
 
