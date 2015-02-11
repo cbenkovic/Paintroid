@@ -167,7 +167,8 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
 		String nameRessourceAsText = mSolo.getString(nameRessourceID);
 		assertNotNull("Name Ressource is null", nameRessourceAsText);
 
-        mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT);
+        //mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT);
+        mSolo.waitForView(R.id.btn_bottom_tools);
 
 		mSolo.clickOnView(mMenuBottomTool);
         mSolo.sleep(MEDIUM_TIMEOUT);
