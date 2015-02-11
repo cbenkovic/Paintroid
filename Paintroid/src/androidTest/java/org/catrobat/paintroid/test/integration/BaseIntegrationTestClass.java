@@ -170,6 +170,7 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
         mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT);
 
 		mSolo.clickOnView(mMenuBottomTool);
+        mSolo.sleep(MEDIUM_TIMEOUT);
 		Log.i(PaintroidApplication.TAG, "clicked on bottom button tool");
 		assertTrue("Tools dialog not visible",
 				mSolo.waitForText(mSolo.getString(R.string.dialog_tools_title), 1, TIMEOUT, true));

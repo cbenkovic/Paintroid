@@ -129,7 +129,7 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals(colorPickerColor, colorAfterRedo);
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testEllipseIsDrawnOnBitmap() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 		PaintroidApplication.perspective.setScale(1.0f);
@@ -147,10 +147,10 @@ public class RectangleFillToolIntegrationTest extends BaseIntegrationTestClass {
 
 		mSolo.sleep(SHORT_SLEEP);
 		mSolo.goBack();
-		mSolo.sleep(SHORT_SLEEP);
+		mSolo.sleep(MEDIUM_TIMEOUT);
 
 		int colorPickerColor = mTopBar.getCurrentTool().getDrawPaint().getColor();
-
+        mSolo.sleep(MEDIUM_TIMEOUT);
 		int colorAfterDrawing = PaintroidApplication.drawingSurface.getPixel(pointUnderTest);
 
 		assertEquals("Pixel should have the same color as currently in color picker", colorPickerColor,

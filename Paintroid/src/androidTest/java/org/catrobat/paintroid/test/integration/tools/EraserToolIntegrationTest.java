@@ -80,6 +80,13 @@ public class EraserToolIntegrationTest extends BaseIntegrationTestClass {
 			IllegalAccessException {
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
 
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCurrentDrawingSurfaceBitmap.isRecycled();
+            }
+        }, 5000);
+
 		PointF screenPoint = new PointF(mScreenWidth / 2, mScreenHeight / 2);
 		PointF canvasPoint = Utils.getCanvasPointFromScreenPoint(screenPoint);
 

@@ -112,7 +112,7 @@ public class StampToolIntegrationTest extends BaseIntegrationTestClass {
 				stampTool.getAttributeButtonResource(ToolButtonIDs.BUTTON_ID_PARAMETER_BOTTOM_2));
 	}
 
-	@Test
+	@FlakyTest(tolerance = 3)
 	public void testIconsAfterCopyAndPasteWithButton() {
 		selectTool(ToolType.STAMP);
         StampTool stampTool = (StampTool) PaintroidApplication.currentTool;

@@ -312,6 +312,7 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 			NoSuchFieldException, IllegalAccessException {
 
 		Point topLeftPoint = new Point(1, 1);
+        mSolo.sleep(MEDIUM_TIMEOUT);
 		Point checkPoint = Utils.convertFromCanvasToScreen(topLeftPoint, PaintroidApplication.perspective);
 		assertTrue("Checkpoint is not on the left side of the center", checkPoint.x < mScreenWidth / 2);
 
