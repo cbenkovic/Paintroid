@@ -182,6 +182,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testSavedStateChangeAfterSave() {
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
 		mSolo.sleep(SHORT_TIMEOUT);
@@ -200,6 +201,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testSaveImage() {
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
 		mSolo.sleep(SHORT_TIMEOUT);
@@ -267,6 +269,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
         //mSolo.clickOnMenuItem(mSolo.getString(R.string.menu_save_image));
         mSolo.sendKey(mSolo.MENU);
+        mSolo.waitForDialogToOpen(SHORT_TIMEOUT);
         mSolo.clickOnText(mSolo.getString(R.string.menu_save_image));
 
         mSolo.waitForDialogToOpen(SHORT_TIMEOUT);
