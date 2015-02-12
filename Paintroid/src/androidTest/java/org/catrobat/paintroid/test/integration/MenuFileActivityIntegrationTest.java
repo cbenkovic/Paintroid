@@ -89,6 +89,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		int bitmapPixelColor = PaintroidApplication.drawingSurface.getPixel(new PointF(xCoordinatePixel,
 				yCoordinatePixel));
 		assertEquals("Color should be Transbarent", Color.TRANSPARENT, bitmapPixelColor);
+        mSolo.finishOpenedActivities();
 	}
 
 	public void testLoadImageDialog() {
@@ -101,6 +102,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 				mSolo.searchButton(mSolo.getString(R.string.save_button_text), true));
 		assertTrue("New drawing 'discard' button not found",
 				mSolo.searchButton(mSolo.getString(R.string.discard_button_text), true));
+        mSolo.finishOpenedActivities();
 	}
 
 	public void testLoadImageDialogOnBackPressed() {
@@ -111,7 +113,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.waitForDialogToOpen();
 		mSolo.goBack();
 		assertTrue("Waiting for DrawingSurface", mSolo.waitForView(DrawingSurface.class, 1, TIMEOUT));
-
+        mSolo.finishOpenedActivities();
 	}
 
 	public void testWarningDialogOnNewImageFromCamera() {
@@ -135,6 +137,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		mSolo.goBack();
 		assertFalse("New drawing warning still found",
 				mSolo.searchText(mSolo.getString(R.string.dialog_warning_new_image), 1, true, true));
+        mSolo.finishOpenedActivities();
 	}
 
 	public void testNewEmptyDrawingWithDiscard() {
@@ -156,7 +159,8 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
                 mSolo.searchText(mSolo.getString(R.string.dialog_warning_new_image), 1, true, true));
 		assertNotSame("Bitmap pixel not changed:", Color.BLACK,
 				PaintroidApplication.drawingSurface.getPixel(Utils.getCanvasPointFromScreenPoint(new PointF(mScreenWidth / 2, mScreenHeight / 2))));
-	}
+        mSolo.finishOpenedActivities();
+    }
 
 	public void testNewEmptyDrawingDialogOnBackPressed() {
 		final int xCoordinatePixel = 0;
@@ -179,7 +183,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 				mSolo.searchText(mSolo.getString(R.string.dialog_warning_new_image), 1, true, true));
 		assertEquals("Bitmap pixel changed:", Color.BLACK,
 				PaintroidApplication.drawingSurface.getPixel(Utils.getCanvasPointFromScreenPoint(new PointF(mScreenWidth / 2, mScreenHeight / 2))));
-
+        mSolo.finishOpenedActivities();
 	}
 
     @FlakyTest(tolerance = 3)
@@ -198,7 +202,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
 		filenames.add(PaintroidApplication.savedPictureUri.toString());
 		assertTrue(PaintroidApplication.isSaved);
-
+        mSolo.finishOpenedActivities();
 	}
 
     @FlakyTest(tolerance = 3)
@@ -214,10 +218,11 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 
 		assertNotNull(PaintroidApplication.savedPictureUri);
 		filenames.add(PaintroidApplication.savedPictureUri.toString());
+        mSolo.finishOpenedActivities();
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testSaveCopy() {
-
 
 		assertNull(PaintroidApplication.savedPictureUri);
 		mSolo.clickOnScreen(screenPoint.x, screenPoint.y);
@@ -248,6 +253,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
 		filenames.add(PaintroidApplication.savedPictureUri.toString());
 
 		mSolo.goBack();
+        mSolo.finishOpenedActivities();
 	}
 
     @FlakyTest(tolerance = 3)
@@ -279,6 +285,7 @@ public class MenuFileActivityIntegrationTest extends BaseIntegrationTestClass {
         long lastmodified = tmpFile.lastModified();
         assertNotSame("File is still the same", oldlength, newlength);
         assertNotSame("File not currently modified", firstmodified, lastmodified);
+        mSolo.finishOpenedActivities();
 	}
 
 	private File getImageFile(String filename) {
