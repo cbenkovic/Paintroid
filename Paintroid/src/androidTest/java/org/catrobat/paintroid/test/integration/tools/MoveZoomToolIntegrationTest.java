@@ -33,6 +33,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.test.FlakyTest;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
@@ -53,6 +54,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 		super();
 	}
 
+    @FlakyTest(tolerance = 3)
 	public void testBorderAfterMove() throws SecurityException, IllegalArgumentException, NoSuchFieldException,
 			IllegalAccessException {
 
@@ -107,7 +109,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
         assertEquals("Bottom Right Pixel should be black if the borders would have been correct", Color.BLACK,
 				colorPixelBottomRight);
 
-
+        mSolo.finishOpenedActivities();
 	}
 
 	@Test
@@ -119,6 +121,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 		float scaleAfterZoom = PaintroidApplication.perspective.getScale();
 
 		assertTrue("Zooming-out has not worked", scaleBeforeZoom > scaleAfterZoom);
+        mSolo.finishOpenedActivities();
 	}
 
 	@Test
@@ -131,6 +134,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 		float scaleAfterZoom = PaintroidApplication.perspective.getScale();
 
 		assertTrue("Zooming-in has not worked", scaleBeforeZoom < scaleAfterZoom);
+        mSolo.finishOpenedActivities();
 	}
 
 	@Test
@@ -151,6 +155,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 
 		Tool newTool = PaintroidApplication.currentTool;
 		assertTrue("Tool is a different object after switch", oldTool == newTool);
+        mSolo.finishOpenedActivities();
 	}
 
 	@Test
@@ -176,6 +181,7 @@ public class MoveZoomToolIntegrationTest extends BaseIntegrationTestClass {
 		assertEquals(PaintroidApplication.currentTool.getToolType(), ToolType.MOVE);
 		mSolo.clickOnView(mButtonTopTool);
 		assertEquals(PaintroidApplication.currentTool.getToolType(), ToolType.RECT);
+        mSolo.finishOpenedActivities();
 	}
 
 	private int getStatusBarHeight(Context context) {

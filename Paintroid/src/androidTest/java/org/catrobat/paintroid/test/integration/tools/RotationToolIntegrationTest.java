@@ -34,6 +34,8 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.test.FlakyTest;
 
+import com.robotium.solo.Condition;
+
 public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 
 	public RotationToolIntegrationTest() throws Exception {
@@ -254,6 +256,13 @@ public class RotationToolIntegrationTest extends BaseIntegrationTestClass {
 	@Test
 	public void testRotationWithDifferentColorsInEachEdge() throws SecurityException, IllegalArgumentException,
 			NoSuchFieldException, IllegalAccessException {
+
+        mSolo.waitForCondition(new Condition() {
+            @Override
+            public boolean isSatisfied() {
+                return !mCurrentDrawingSurfaceBitmap.isRecycled();
+            }
+        }, 5000);
 
 		selectTool(ToolType.ROTATE);
 
