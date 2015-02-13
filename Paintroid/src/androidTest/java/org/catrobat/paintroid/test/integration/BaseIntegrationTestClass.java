@@ -93,6 +93,7 @@ public class BaseIntegrationTestClass extends ActivityInstrumentationTestCase2<M
 			Log.d("Paintroid test", "setup" + setup++);
 			mSolo = new Solo(getInstrumentation(), getActivity());
 			Log.d("Paintroid test", "setup" + setup++);
+            mSolo.unlockScreen();
 
 			/*
 			 * if (Utils.isScreenLocked(mSolo.getCurrentActivity())) { mScreenLocked = true; tearDown();
