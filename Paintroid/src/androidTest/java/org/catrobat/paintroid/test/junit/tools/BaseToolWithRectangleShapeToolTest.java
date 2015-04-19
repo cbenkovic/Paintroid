@@ -24,7 +24,6 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.PointF;
-import android.util.Log;
 
 import org.catrobat.paintroid.PaintroidApplication;
 import org.catrobat.paintroid.test.utils.PrivateAccess;
@@ -506,9 +505,7 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 		assertFalse("Rectangle should rotate.", newRotation == 0);
 	}
 
-	// ### new for rotate with defined angle
 	public void testRotateRectangleRightWithSnap() throws NoSuchFieldException, IllegalAccessException {
-
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest, TOOL_MEMBER_ROTATION_ENABLED, true);
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest, TOOL_MEMBER_SNAPPING_ACTIVATED, true);
 		mToolToTest.handleDown(mToolPosition);
@@ -519,9 +516,10 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 		PointF topRightRotationPoint = new PointF(mToolPosition.x + mToolPosition.x - topLeftRotationPoint.x,
 				topLeftRotationPoint.y);
 
+		float snapAngle = 90f;
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest,
-				TOOL_MEMBER_SNAP_ANGLE, 90);
-		// try rotate right
+				TOOL_MEMBER_SNAP_ANGLE, (int)snapAngle);
+
 		PointF currentPosition = topLeftRotationPoint;
 		PointF newPosition = new PointF(topRightRotationPoint.x - 1, topRightRotationPoint.y);
 		mToolToTest.handleDown(currentPosition);
@@ -531,26 +529,25 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 				TOOL_MEMBER_ROTATION);
 		float newRealRotation = (Float) PrivateAccess.getMemberValue(BaseToolWithRectangleShape.class, mToolToTest,
 				TOOL_MEMBER_REAL_ROTATION);
-		assertTrue("Rotation value should be 90 degree.", newRotation == 90);
-		assertTrue("Real rotation value should be less than 90 degree.", newRealRotation < 90);
+		assertEquals("Wrong rotation value", snapAngle, newRotation);
+		assertTrue("Real rotation value should be less than " + snapAngle + " degree.", newRealRotation < snapAngle);
 	}
 
-	// ### new for rotate with defined angle
 	public void testRotateRectangleLeftWithSnap() throws NoSuchFieldException, IllegalAccessException {
-
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest, TOOL_MEMBER_ROTATION_ENABLED, true);
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest, TOOL_MEMBER_SNAPPING_ACTIVATED, true);
 		mToolToTest.handleDown(mToolPosition);
 		mToolToTest.handleUp(mToolPosition);
 
+		float snapAngle = 90f;
 		PointF topLeftRotationPoint = new PointF(mToolPosition.x - mRectWidth / 2 - mSymbolDistance / 2,
 				mToolPosition.y - mRectHeight / 2 - mSymbolDistance / 2);
 		PointF topRightRotationPoint = new PointF(mToolPosition.x + mToolPosition.x - topLeftRotationPoint.x,
 				topLeftRotationPoint.y);
 
 		PrivateAccess.setMemberValue(BaseToolWithRectangleShape.class, mToolToTest,
-				TOOL_MEMBER_SNAP_ANGLE, 90);
-		// try rotate left
+				TOOL_MEMBER_SNAP_ANGLE, (int)snapAngle);
+
 		PointF currentPosition = topRightRotationPoint;
 		PointF newPosition = new PointF(topLeftRotationPoint.x + 1, topLeftRotationPoint.y);
 		mToolToTest.handleDown(currentPosition);
@@ -560,8 +557,8 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 				TOOL_MEMBER_ROTATION);
 		float newRealRotation = (Float) PrivateAccess.getMemberValue(BaseToolWithRectangleShape.class, mToolToTest,
 				TOOL_MEMBER_REAL_ROTATION);
-		assertTrue("Rotation value should be 90 degree.", newRotation == -90);
-		assertTrue("Real rotation value should be less than 90 degree.", newRealRotation > -90);
+		assertEquals("Wrong rotation value", -snapAngle, newRotation);
+		assertTrue("Real rotation value should be bigger than -" + snapAngle + " degree.", newRealRotation > -snapAngle);
 	}
 
 	private void doResize(float dragFromX, float dragToX, float dragFromY, float dragToY, boolean resizeWidth,

@@ -126,7 +126,6 @@ public abstract class BaseTool extends Observable implements Tool, Observer {
 		mMovedDistance = new PointF(0f, 0f);
 		mPreviousEventCoordinate = new PointF(0f, 0f);
 
-		// ### new for rotate with defined angle
 		Activity act = (Activity) mContext;
 		if (act.findViewById(R.id.layout_rotation_buttons) != null) {
 			act.runOnUiThread(new Runnable() { // necessary for junit tests, otherwise the wrong thread is used
@@ -139,15 +138,6 @@ public abstract class BaseTool extends Observable implements Tool, Observer {
 				}
 			});
 		}
-
-		/*
-		if (act.findViewById(R.id.layout_rotation_buttons) != null) {
-			RelativeLayout layout = (RelativeLayout) act.findViewById(R.id.main_layout);
-			View view = act.findViewById(R.id.layout_rotation_buttons);
-			layout.removeView(view);
-		}
-*/
-
 	}
 
 	@Override
