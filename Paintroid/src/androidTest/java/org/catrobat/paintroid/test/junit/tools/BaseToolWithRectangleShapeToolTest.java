@@ -40,9 +40,9 @@ public class BaseToolWithRectangleShapeToolTest extends BaseToolTest {
 	private static final String TOOL_MEMBER_RESPECT_BOUNDS = "mRespectImageBounds";
 	private static final String TOOL_MEMBER_BOX_RESIZE_MARGIN = "DEFAULT_BOX_RESIZE_MARGIN";
 	private static final String TOOL_MEMBER_ROTATION = "mBoxRotation";
-	private static final String TOOL_MEMBER_REAL_ROTATION = "mRealBoxRotation";   // ### new for rotate with defined angle
-	private static final String TOOL_MEMBER_SNAP_ANGLE = "mSnapAngle";   // ### new for rotate with defined angle
-	private static final String TOOL_MEMBER_SNAPPING_ACTIVATED = "mSnappingIsActivated";   // ### new for rotate with defined angle
+	private static final String TOOL_MEMBER_REAL_ROTATION = "mRealBoxRotation";
+	private static final String TOOL_MEMBER_SNAP_ANGLE = "mSnapAngle";
+	private static final String TOOL_MEMBER_SNAPPING_ACTIVATED = "mSnappingIsActivated";
 	private static final String TOOL_MEMBER_ROTATION_ENABLED = "mRotationEnabled";
 	private static final String TOOL_MEMBER_ROTATION_SYMBOL_DISTANCE = "mRotationSymbolDistance";
 	private static final int RESIZE_MOVE_DISTANCE = 50;

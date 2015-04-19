@@ -82,7 +82,7 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 		assertTrue("Done button text not found", mSolo.searchText(
 				mSolo.getString(R.string.done)));
 
-		// text different values
+		// test different values
 		mSolo.clickOnView(mRadioButton30);
 		assertTrue("Radio button not pressed, 30 should be selected", mSolo.waitForText("30", 2, MEDIUM_TIMEOUT));
 		assertEquals("Wrong radio button is pressed", mRadioButton30.getId(), mAngleSelection.getCheckedRadioButtonId());
@@ -138,7 +138,7 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 
 		// test right rotation button
 		selectRotationAngle(mRadioButton45);
-		float expectedValues[] = new float[] {45, 90, 135, 180, -135, -90, -45, 0};
+		float expectedValues[] = new float[] { 45, 90, 135, 180, -135, -90, -45, 0 };
 		for (float expected : expectedValues) {
 			mSolo.clickOnView(mButtonRotateRight);
 			mSolo.sleep(SHORT_SLEEP);
@@ -274,7 +274,6 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 
 	protected void selectRotationAngle(View view) {
 		openRotationSettingsDialog();
-		int radioButton30 = mRadioButton30.getId();
 
 		if (view.getId() == mRadioButton30.getId()) {
 			mSolo.clickOnView(mRadioButton30);
