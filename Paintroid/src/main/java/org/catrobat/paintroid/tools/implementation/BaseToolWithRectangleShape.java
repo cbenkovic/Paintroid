@@ -19,7 +19,10 @@
 
 package org.catrobat.paintroid.tools.implementation;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -37,10 +40,23 @@ import android.graphics.Region.Op;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
+import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.PaintroidApplication;
 import org.catrobat.paintroid.R;
+import org.catrobat.paintroid.dialog.CustomAlertDialogBuilder;
+import org.catrobat.paintroid.dialog.RotationDialog;
 import org.catrobat.paintroid.tools.ToolType;
 
 public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
@@ -79,10 +95,14 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 	private static final int ROTATION_ARROW_ARC_RADIUS = getDensitySpecificValue(8);
 	private static final int ROTATION_ARROW_HEAD_SIZE = getDensitySpecificValue(3);
 	private static final int ROTATION_ARROW_OFFSET = getDensitySpecificValue(3);
+	private static final int DEFAULT_ROTATION_ANGLE = 15;
 
 	protected float mBoxWidth;
 	protected float mBoxHeight;
 	protected float mBoxRotation; // in degree
+	protected float mRealBoxRotation; // in degree 		// ### new for rotate with defined angle
+	protected int mSnapAngle = DEFAULT_ROTATION_ANGLE;   					// ### new for rotate with defined angle
+	protected boolean mSnappingIsActivated = false;   	// ### new for rotate with defined angle
 	protected float mBoxResizeMargin;
 	protected float mRotationSymbolDistance;
 	protected float mRotationSymbolWidth;
@@ -97,6 +117,16 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 	private boolean mBackgroundShadowEnabled;
 	private boolean mResizePointsVisible;
 	private boolean mStatusIconEnabled;
+
+	private RotationDialog.OnRotationChangedListener mRotationChangedListener;
+
+	private TextView mRotationAngleSeekBarText;  			// ### new for rotate with defined angle
+	private SeekBar mRotationAngleSeekBar;  				// ### new for rotate with defined angle
+	private RadioGroup mRotationAngleRadioGroup;  			// ### new for rotate with defined angle
+	private RadioButton mSelectedAngleRadioButton = null; 	// ### new for rotate with defined angle
+	private CheckBox mRotationSnappingCheckBox;  			// ### new for rotate with defined angle
+	private AlertDialog mRotationDialog;					// ### new for rotate with defined angle
+
 
 	private boolean mIsDown = false;
 
@@ -153,6 +183,27 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 
 		initLinePaint();
 		initScaleDependedValues();
+
+		// ### new for rotate with defined angle
+		//createRotationButtons(context);
+		//mRotationDialog = createRotationInputDialog();
+
+		RotationDialog.init(mContext);
+		mRotationChangedListener = new RotationDialog.OnRotationChangedListener() {
+			@Override
+			public void setAngle(int angle) {
+				mSnapAngle = angle;
+			}
+
+			@Override
+			public void setSnappingActivated(boolean activated) {
+				mSnappingIsActivated = activated;
+			}
+		};
+
+		if (getToolType() != ToolType.CROP) {
+			addRotationButtonsLayout();
+		}
 	}
 
 	public BaseToolWithRectangleShape(Context context, ToolType toolType,
@@ -175,6 +226,134 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 		mBoxResizeMargin = getInverselyProportionalSizeForZoom(DEFAULT_BOX_RESIZE_MARGIN);
 		mRotationSymbolDistance = getInverselyProportionalSizeForZoom(DEFAULT_ROTATION_SYMBOL_DISTANCE) * 2;
 		mRotationSymbolWidth = getInverselyProportionalSizeForZoom(DEFAULT_ROTATION_SYMBOL_WIDTH);
+	}
+
+	// ### new for rotate with defined angle
+	private void addRotationButtonsLayout() {
+		final Activity act = (Activity) mContext;
+		LayoutInflater inflater = act.getLayoutInflater();
+		final View view = inflater.inflate(R.layout.rotation_buttons, null);
+		//final ImageButton rotationBtnLeft = (ImageButton) view.findViewById(R.id.rotation_btn_left);
+		//final ImageButton rotationBtnRight = (ImageButton) view.findViewById(R.id.rotation_btn_right);
+
+
+
+		view.findViewById(R.id.rotation_btn_angle).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//mRotationDialog.show();
+				showRotationDialog();
+			}
+		});
+
+		view.findViewById(R.id.rotation_btn_left).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				rotateRectangleWithButton(-mSnapAngle);
+			}
+		});
+
+		view.findViewById(R.id.rotation_btn_right).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				rotateRectangleWithButton(mSnapAngle);
+			}
+		});
+
+		act.runOnUiThread(new Runnable() { // necessary for junit tests, otherwise the wrong thread is used
+			@Override
+			public void run() {
+				Activity act = (Activity) mContext;
+				RelativeLayout layout = (RelativeLayout) act.findViewById(R.id.main_layout);
+				layout.addView(view);
+
+			}
+		});
+
+	}
+
+	protected void showRotationDialog() {
+		RotationDialog.getInstance().addRotationChangedListener(mRotationChangedListener);
+		RotationDialog.getInstance().setCurrentValues(mSnapAngle, mSnappingIsActivated);
+		RotationDialog.getInstance().show(
+				((MainActivity) mContext).getSupportFragmentManager(),
+				"rotationdialog");
+	}
+
+	// ### new for rotate with defined angle
+	private void createRotationButtons(Context context) {
+
+		int buttonDistance = 10;
+		int buttonHeight = 100;
+		int buttonWidth = 150;
+
+		final Button angleButton = new Button(context);
+		angleButton.setText("angle");
+		angleButton.setHeight(buttonHeight);
+		angleButton.setWidth(buttonWidth);
+		angleButton.setX(0);
+		angleButton.setY(0);
+		angleButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				rotationInputDialog(angleButton);
+			}
+		});
+		addButtonToView(angleButton);
+
+
+		Button rotateLeftButton = new Button(context);
+		rotateLeftButton.setText("left");
+		rotateLeftButton.setHeight(buttonHeight);
+		rotateLeftButton.setWidth(buttonWidth);
+		rotateLeftButton.setX(buttonWidth + buttonDistance);
+		rotateLeftButton.setY(angleButton.getY());
+		rotateLeftButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				rotateRectangleWithButton(-mSnapAngle);
+			}
+		});
+		addButtonToView(rotateLeftButton);
+
+
+
+		Button rotateRightButton = new Button(context);
+		rotateRightButton.setText("right");
+		rotateRightButton.setHeight(buttonHeight);
+		rotateRightButton.setWidth(buttonWidth);
+		rotateRightButton.setX(2*(buttonWidth + buttonDistance));
+		//rotateRightButton.setX(rotateLeftButton.getX() + rotateLeftButton.getWidth() + buttonDistance);
+		rotateRightButton.setY(rotateLeftButton.getY());
+		rotateRightButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				rotateRectangleWithButton(mSnapAngle);
+			}
+		});
+		addButtonToView(rotateRightButton);
+
+	}
+
+	// ### new for rotate with defined angle
+	private void rotateRectangleWithButton(float degree) {
+		mBoxRotation += degree;
+		mBoxRotation += 360;
+		mBoxRotation = mBoxRotation % 360;
+		if (mBoxRotation > 180)
+			mBoxRotation = -180 + (mBoxRotation - 180);
+
+		mRealBoxRotation = mBoxRotation;
+	}
+
+	private void addButtonToView(final Button button) {
+		Activity act = (Activity) mContext;
+		act.runOnUiThread(new Runnable() { // necessary for junit tests, otherwise the wrong thread is used
+			@Override
+			public void run() {
+				Activity act = (Activity) mContext;
+				RelativeLayout layout = (RelativeLayout) act.findViewById(R.id.main_layout);
+				layout.addView(button);
+
+			}
+		});
 	}
 
 	public void setBitmap(Bitmap bitmap) {
@@ -287,6 +466,12 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 			drawBitmap(canvas);
 		}
 
+		//v ### new for rotate with defined angle
+		if (true) {
+			showCurrentAngle(canvas);
+		}
+		//^ ### new for rotate with defined angle
+
 		drawRectangle(canvas);
 		drawToolSpecifics(canvas);
 
@@ -334,6 +519,15 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 		canvas.drawCircle(-mBoxWidth / 2, 0, circleRadius, circlePaint);
 		canvas.drawCircle(-mBoxWidth / 2, -mBoxHeight / 2, circleRadius,
 				circlePaint);
+	}
+
+	// ### new for rotate with defined angle
+	private void showCurrentAngle(Canvas canvas) {
+		Paint anglePaint = new Paint();
+		anglePaint.setColor(Color.GREEN);
+		anglePaint.setTextSize(70);
+		String angleText = "" + mBoxRotation;
+		canvas.drawText(angleText, 100, 100, anglePaint);
 	}
 
 	private void drawRotationArrows(Canvas canvas) {
@@ -469,6 +663,168 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 		mToolPosition.y = newYPos;
 	}
 
+	// ### new for rotate with defined angle
+	private AlertDialog createRotationInputDialog() {
+
+		AlertDialog.Builder builder = new CustomAlertDialogBuilder(mContext);
+		builder.setTitle(R.string.dialog_rotation_settings_text);
+
+		final Activity act = (Activity) mContext;
+		LayoutInflater inflater = act.getLayoutInflater();
+		final View view = inflater.inflate(R.layout.dialog_rotation, null);
+
+		mRotationAngleSeekBar = (SeekBar) view.findViewById(R.id.rotation_angle_seek_bar);
+		mRotationAngleSeekBarText = (TextView) view.findViewById(R.id.rotation_angle_seek_bar_text);
+		mRotationAngleRadioGroup = (RadioGroup) view.findViewById(R.id.rotation_angle_selection);
+		mRotationSnappingCheckBox = (CheckBox) view.findViewById(R.id.rotation_snap_checkbox);
+
+		// set dialog values
+		mRotationAngleSeekBarText.setText((String.valueOf(mSnapAngle)));
+		mRotationAngleSeekBar.setProgress(mSnapAngle);
+		if (mSelectedAngleRadioButton != null) {
+			mRotationAngleRadioGroup.check(mSelectedAngleRadioButton.getId());
+		}
+		mRotationSnappingCheckBox.setChecked(mSnappingIsActivated);
+
+
+		mRotationAngleRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if (mRotationAngleRadioGroup.getCheckedRadioButtonId() != -1) {
+					mSelectedAngleRadioButton = (RadioButton) view.findViewById(checkedId);
+					mSnapAngle = Integer.parseInt(mSelectedAngleRadioButton.getText().toString());
+					mRotationAngleSeekBar.setProgress(mSnapAngle);
+				}
+			}
+		});
+
+		mRotationAngleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+				mRotationAngleSeekBarText.setText(String.valueOf(progress));
+				if (fromUser) {
+					mSnapAngle = progress;
+					mSelectedAngleRadioButton = null;
+					mRotationAngleRadioGroup.clearCheck();
+				}
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+			}
+		});
+
+		mRotationSnappingCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				mSnappingIsActivated = isChecked;
+			}
+		});
+
+
+		builder.setView(view)
+				.setNeutralButton(R.string.done, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+
+						//button.setText(String.valueOf(mSnapAngle));
+					}
+				});
+		return builder.create();
+	}
+
+	// ### new for rotate with defined angle
+	private void rotationInputDialog(final Button button) {
+
+		AlertDialog.Builder builder = new CustomAlertDialogBuilder(mContext);
+		builder.setTitle(R.string.dialog_rotation_settings_text);
+
+		final Activity act = (Activity) mContext;
+		LayoutInflater inflater = act.getLayoutInflater();
+		final View view = inflater.inflate(R.layout.dialog_rotation, null);
+
+		mRotationAngleSeekBar = (SeekBar) view.findViewById(R.id.rotation_angle_seek_bar);
+		mRotationAngleSeekBarText = (TextView) view.findViewById(R.id.rotation_angle_seek_bar_text);
+		mRotationAngleRadioGroup = (RadioGroup) view.findViewById(R.id.rotation_angle_selection);
+		mRotationSnappingCheckBox = (CheckBox) view.findViewById(R.id.rotation_snap_checkbox);
+
+		// set dialog values
+		mRotationAngleSeekBarText.setText((String.valueOf(mSnapAngle)));
+		mRotationAngleSeekBar.setProgress(mSnapAngle);
+		if (mSelectedAngleRadioButton != null) {
+			mRotationAngleRadioGroup.check(mSelectedAngleRadioButton.getId());
+		}
+		mRotationSnappingCheckBox.setChecked(mSnappingIsActivated);
+
+
+		mRotationAngleRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if (mRotationAngleRadioGroup.getCheckedRadioButtonId() != -1) {
+					mSelectedAngleRadioButton = (RadioButton) view.findViewById(checkedId);
+					mSnapAngle = Integer.parseInt(mSelectedAngleRadioButton.getText().toString());
+					mRotationAngleSeekBar.setProgress(mSnapAngle);
+				}
+			}
+		});
+
+		mRotationAngleSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+				mRotationAngleSeekBarText.setText(String.valueOf(progress));
+				if (fromUser) {
+					mSnapAngle = progress;
+					mSelectedAngleRadioButton = null;
+					mRotationAngleRadioGroup.clearCheck();
+				}
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+			}
+		});
+
+		mRotationSnappingCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				mSnappingIsActivated = isChecked;
+			}
+		});
+
+
+		builder.setView(view)
+				.setPositiveButton(R.string.done, new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+
+						// written Input
+						/*
+                        EditText inputField = (EditText) view.findViewById(R.id.rotation_input_angle);
+                        String value = inputField.getText().toString();
+                        try {
+                            mSnapAngle = Integer.parseInt(value);
+                        } catch (NumberFormatException e) {
+                            // TODO: not necessary if scroll selection is used
+                        }
+						*/
+						button.setText(String.valueOf(mSnapAngle));
+					}
+				});
+            /*.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+        */
+		builder.show();
+	}
+
 	private void rotate(float deltaX, float deltaY) {
 		if (mDrawingBitmap == null) {
 			return;
@@ -485,10 +841,94 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 		double rotationAngleCurrent = Math.atan2(currentYLength, currentXLength);
 		double deltaAngle = -(rotationAnglePrevious - rotationAngleCurrent);
 
-		mBoxRotation += (float) Math.toDegrees(deltaAngle) + 360;
-		mBoxRotation = mBoxRotation % 360;
-		if (mBoxRotation > 180)
-			mBoxRotation = -180 + (mBoxRotation - 180);
+		// v### new for rotate with defined angle
+
+        /* //previous version
+        mBoxRotation += (float) Math.toDegrees(deltaAngle) + 360;
+        mBoxRotation = mBoxRotation % 360;
+        if (mBoxRotation > 180)
+            mBoxRotation = -180 + (mBoxRotation - 180);
+         */
+
+		mRealBoxRotation += (float) Math.toDegrees(deltaAngle) + 360;
+		mRealBoxRotation = mRealBoxRotation % 360;
+		if (mRealBoxRotation > 180)
+			mRealBoxRotation = -180 + (mRealBoxRotation - 180);
+
+		//if (mSnappingIsActivated) {
+		if (mSnappingIsActivated) {
+			float snapInterval = 5;
+			snapAngleIfIsInInterval(snapInterval);
+		}
+		else {
+			mBoxRotation = mRealBoxRotation;
+		}
+
+        /*
+        float snapAngle = Math.abs(mSnapAngle);
+        float snapInterval = 5;
+
+        float tempBoxRotation = mRealBoxRotation;// + 180; // quick fix for negative angles, not necessary if input doesn't allows it
+        //float tempBoxRotation = mRealBoxRotation;
+
+        float snapDelta = tempBoxRotation % snapAngle;
+
+        if (tempBoxRotation > 0)
+            snapDelta = snapAngle - snapDelta;
+        else
+            snapDelta = snapAngle + snapDelta;
+
+        if (snapDelta < snapInterval) { // realRotation < snapAngle
+            if (tempBoxRotation > 0)
+                mBoxRotation = mRealBoxRotation + snapDelta;
+            else
+                mBoxRotation = mRealBoxRotation - snapDelta;
+        }
+        else if (snapDelta > (snapAngle - snapInterval)) { // realRotation > snapAngle
+            if (tempBoxRotation > 0)
+                mBoxRotation = mRealBoxRotation - (snapAngle - snapDelta);
+            else
+                mBoxRotation = mRealBoxRotation + (snapAngle - snapDelta);
+        }
+        else { // do not snap
+            mBoxRotation = mRealBoxRotation;
+        }
+        */
+
+		Log.d("Rotation", "mRealBoxRotation = " + mRealBoxRotation);
+		Log.d("Rotation", "mBoxRotation = " + mBoxRotation);
+
+		// ^### new for rotate with defined angle
+	}
+
+	private void snapAngleIfIsInInterval(float snapInterval){
+		float snapAngle = Math.abs(mSnapAngle);
+
+		float tempBoxRotation = mRealBoxRotation;// + 180; // quick fix for negative angles, not necessary if input doesn't allows it
+		//float tempBoxRotation = mRealBoxRotation;
+
+		float snapDelta = tempBoxRotation % snapAngle;
+
+		if (tempBoxRotation > 0)
+			snapDelta = snapAngle - snapDelta;
+		else
+			snapDelta = snapAngle + snapDelta;
+
+		if (snapDelta < snapInterval) { // realRotation < snapAngle
+			if (tempBoxRotation > 0)
+				mBoxRotation = mRealBoxRotation + snapDelta;
+			else
+				mBoxRotation = mRealBoxRotation - snapDelta;
+		}
+		else if (snapDelta > (snapAngle - snapInterval)) { // realRotation > snapAngle
+			if (tempBoxRotation > 0)
+				mBoxRotation = mRealBoxRotation - (snapAngle - snapDelta);
+			else
+				mBoxRotation = mRealBoxRotation + (snapAngle - snapDelta);
+		}
+		else { // do not snap
+			mBoxRotation = mRealBoxRotation;
+		}
 	}
 
 	private FloatingBoxAction getAction(float clickCoordinatesX,
@@ -503,6 +943,18 @@ public abstract class BaseToolWithRectangleShape extends BaseToolWithShape {
 				+ Math.sin(-rotationRadiant)
 				* (clickCoordinatesX - mToolPosition.x) + Math
 				.cos(-rotationRadiant) * (clickCoordinatesY - mToolPosition.y));
+
+		/*
+        // v### new for rotate with defined angle
+        // left side of screen for activating rotation input //
+        Display display = ((WindowManager) mContext
+                .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+
+        if (clickCoordinatesX < display.getWidth() / 10) {
+            rotationInputDialog();
+        }
+        // ^### new for rotate with defined angle
+*/
 
 		// Move (within box)
 		if (clickCoordinatesRotatedX < mToolPosition.x + mBoxWidth / 2

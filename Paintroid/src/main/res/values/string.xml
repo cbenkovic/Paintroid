@@ -131,6 +131,12 @@
     -->
     <string name="crop_algorithm_finish_text">to crop tap</string>
     <string name="crop_nothing_to_corp">nothing to crop</string>
+    <string name="dialog_rotation_settings_text">Rotation settings</string>
+    <string name="rotation_snap_checkbox_text">Activate for snapping</string>
+    <string name="rotation_angle_text">Rotation angle in degrees</string>
+    <string name="rotation_degree_30_text">30</string>
+    <string name="rotation_degree_45_text">45</string>
+    <string name="rotation_degree_90_text">90</string>
 
     <!-- Extras -->
     <string name="ext_storage_directory_name" translatable="false">Pocket Paint</string>
