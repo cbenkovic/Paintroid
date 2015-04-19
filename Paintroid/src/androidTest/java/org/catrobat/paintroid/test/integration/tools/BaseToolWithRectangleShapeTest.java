@@ -66,11 +66,10 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 		super.tearDown();
 	}
 
-	public void testRotationDialog() throws NoSuchFieldException, IllegalAccessException {
+	public void testRotationDialogDefaultValues() throws NoSuchFieldException, IllegalAccessException {
 		selectTool(ToolType.RECT);
 		openRotationSettingsDialog();
 
-		// test default dialog values
 		int noRadioBtnSelected = -1;
 		assertTrue("Rotation dialog title not found", mSolo.searchText(
 				mSolo.getString(R.string.dialog_rotation_settings_text)));
@@ -81,8 +80,12 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 		assertFalse("Snapping checkbox should not be activated", mSnapCheckBox.isPressed());
 		assertTrue("Done button text not found", mSolo.searchText(
 				mSolo.getString(R.string.done)));
+	}
 
-		// test different values
+	public void testRotationDialogDifferentValues() {
+		selectTool(ToolType.RECT);
+		openRotationSettingsDialog();
+
 		mSolo.clickOnView(mRadioButton30);
 		assertTrue("Radio button not pressed, 30 should be selected", mSolo.waitForText("30", 2, MEDIUM_TIMEOUT));
 		assertEquals("Wrong radio button is pressed", mRadioButton30.getId(), mAngleSelection.getCheckedRadioButtonId());
@@ -98,6 +101,7 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 		assertEquals("Wrong radio button is pressed", mRadioButton90.getId(), mAngleSelection.getCheckedRadioButtonId());
 		assertEquals("Wrong seek bar progress", mAngleSeekBar.getProgress(), 90);
 
+		int noRadioBtnSelected = -1;
 		mSolo.clickOnView(mAngleSeekBar);
 		assertTrue("Incorrect seek bar text", mSolo.waitForText(String.valueOf(mAngleSeekBar.getMax()/2)));
 		assertEquals("No radio button should be selected", noRadioBtnSelected, mAngleSelection.getCheckedRadioButtonId());
@@ -110,8 +114,12 @@ public class BaseToolWithRectangleShapeTest extends BaseIntegrationTestClass {
 			}
 		}, MEDIUM_TIMEOUT);
 		assertTrue("Checkbox should be checked", mSnapCheckBox.isChecked());
+}
 
-		// test if values are held after closing dialog and reopen it
+	public void testValuesHeldAfterReopenDialog() {
+		selectTool(ToolType.RECT);
+		openRotationSettingsDialog();
+
 		mSolo.clickOnView(mRadioButton45);
 		assertTrue("Radio button not pressed, 45 should be selected", mSolo.waitForText("45", 2, MEDIUM_TIMEOUT));
 		int checkedRadioBtnBefore = mAngleSelection.getCheckedRadioButtonId();
