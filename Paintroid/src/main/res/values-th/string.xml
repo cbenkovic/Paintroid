@@ -39,7 +39,7 @@
   <string name="button_rotate">หมุน</string>
   <string name="button_line">เส้น</string>
   <string name="cancel">ยกเลิก</string>
-  <string name="ok" tools:ignore="Typos">@android:string/ok</string>
+  <string name="ok" tools:ignore="Typos">\@android:string/ok</string>
   <string name="yes">ใช่</string>
   <string name="no">ไม่ใช่</string>
   <string name="done">เสร็จสิ้น</string>
@@ -107,9 +107,27 @@
   <string name="menu_quit">ออก</string>
   <string name="save_button_text">บันทึก</string>
   <string name="discard_button_text">ละทิ้ง</string>
+  <!--
+    exclude preferences for release
+        <string name="menu_preferences">Settings</string>
+    <string name="preferences_tools">Active Tools</string>
+    <string name="preferences_tools_summary">Activate/Deactivate tools.</string>
+    <string name="preference_button_redo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preference_button_undo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preferences_language">Change Display Language</string>
+    <string name="preferences_language_summary">Requires app restart.</string>
+    <string name="preferences_language_key">preferences_language_key</string>
+    <string name="preferences_language_dialog_reboot_warning_text">App restart required.</string>
+
+
+
+
+    -->
   <string name="resize_to_resize_tap_text">คลิกหากต้องการเปลี่ยนขนาด</string>
   <string name="resize_nothing_to_resize">ไม่มีภาพให้ปรับขนาด</string>
   <string name="resize_max_image_resolution_reached">ปรับความละเอียดภาพสูงสุดแล้ว</string>
+  <!-- Extras -->
+  <!-- Return to Catroid -->
   <string name="dialog_unallowed_chars_title">อักขระที่ไม่อนุญาติ</string>
   <string name="dialog_unallowed_chars_text">ใช้ได้เฉพาะตัวอักษร หมายเลข และ \'_\' </string>
   <string name="dialog_shape_text">รูปร่าง</string>

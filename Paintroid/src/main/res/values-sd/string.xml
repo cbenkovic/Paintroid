@@ -39,7 +39,7 @@
   <string name="button_rotate">Rotate</string>
   <string name="button_line">Line</string>
   <string name="cancel">منسوخ ڪيو</string>
-  <string name="ok" tools:ignore="Typos">@android:string/ok</string>
+  <string name="ok" tools:ignore="Typos">\@android:string/ok</string>
   <string name="yes">هائو</string>
   <string name="no">نه</string>
   <string name="done">Done</string>
@@ -62,7 +62,7 @@
   <string name="dialog_tools_title">Tools</string>
   <string name="dialog_save_title">Save Picture</string>
   <string name="dialog_save_text">Input Filename</string>
-  <string name="dialog_load">لوڊ ٿي رهيو آهي...</string>
+  <string name="dialog_load">لوڊ ٿي رهيو آهي&#8230;</string>
   <string name="dialog_overwrite_text">Overwrite an existing file?</string>
   <string name="dialog_error_save_title">Error load/save File</string>
   <string name="dialog_error_sdcard_text">Check Image or SD-Card!</string>
@@ -107,9 +107,27 @@
   <string name="menu_quit">Quit</string>
   <string name="save_button_text">Save</string>
   <string name="discard_button_text">Discard</string>
+  <!--
+    exclude preferences for release
+        <string name="menu_preferences">Settings</string>
+    <string name="preferences_tools">Active Tools</string>
+    <string name="preferences_tools_summary">Activate/Deactivate tools.</string>
+    <string name="preference_button_redo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preference_button_undo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preferences_language">Change Display Language</string>
+    <string name="preferences_language_summary">Requires app restart.</string>
+    <string name="preferences_language_key">preferences_language_key</string>
+    <string name="preferences_language_dialog_reboot_warning_text">App restart required.</string>
+
+
+
+
+    -->
   <string name="resize_to_resize_tap_text">to resize tap</string>
   <string name="resize_nothing_to_resize">nothing to resize</string>
   <string name="resize_max_image_resolution_reached">max image resolution reached</string>
+  <!-- Extras -->
+  <!-- Return to Catroid -->
   <string name="dialog_unallowed_chars_title">Unallowed Character(s)</string>
   <string name="dialog_unallowed_chars_text">Only letters, numbers and \'_\' allowed.</string>
   <string name="dialog_shape_text">Shape</string>

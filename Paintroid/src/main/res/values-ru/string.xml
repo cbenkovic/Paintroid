@@ -21,32 +21,32 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
   <string name="app_name">Pocket Paint</string>
-  <string name="button_brush">Brush</string>
-  <string name="button_cursor">Cursor</string>
-  <string name="button_ellipse">Circle/Ellipse</string>
-  <string name="button_zoom">Zoom</string>
-  <string name="button_pipette">Pipette</string>
-  <string name="button_undo">Undo</string>
-  <string name="button_redo">Redo</string>
-  <string name="button_stamp">Stamp</string>
-  <string name="button_rectangle">Square/Rectangle</string>
-  <string name="button_import_image">Import Image</string>
-  <string name="button_eraser">Eraser</string>
-  <string name="button_resize">Resize Image</string>
-  <string name="button_flip">Flip</string>
-  <string name="button_fill">Fill</string>
+  <string name="button_brush">Кисть</string>
+  <string name="button_cursor">Указатель</string>
+  <string name="button_ellipse">Круг, овал</string>
+  <string name="button_zoom">Масштабирование (Zoom)</string>
+  <string name="button_pipette">Пипетка</string>
+  <string name="button_undo">Отмена</string>
+  <string name="button_redo">Переделать</string>
+  <string name="button_stamp">Штамп</string>
+  <string name="button_rectangle">Квадрат, прямоугольник</string>
+  <string name="button_import_image">Импортировать изображение</string>
+  <string name="button_eraser">Ластик</string>
+  <string name="button_resize">Изменить размер изображения</string>
+  <string name="button_flip">Перевернуть</string>
+  <string name="button_fill">Заливка</string>
   <string name="button_move">Идти</string>
-  <string name="button_rotate">Rotate</string>
-  <string name="button_line">Line</string>
+  <string name="button_rotate">Повернуть</string>
+  <string name="button_line">Линия</string>
   <string name="cancel">Отмена</string>
   <string name="ok" tools:ignore="Typos">\@android:string/ok</string>
   <string name="yes">Да</string>
   <string name="no">Нет</string>
-  <string name="done">Done</string>
-  <string name="terms_of_use_and_service_title">Terms of Use and Service</string>
+  <string name="done">Закончить</string>
+  <string name="terms_of_use_and_service_title">Условия использования и сервисы</string>
   <string name="terms_of_use_and_service_content">In order to be allowed to use Pocket Paint and other executables offered by the Catrobat project, you must agree to our Terms of Use and Service and strictly follow them when you use Pocket Code and our other executables. Please see the link below for their precise formulation.\n\n</string>
-  <string name="terms_of_use_and_service_url_text">Terms of Use and Service</string>
-  <string name="about_title">About Pocket Paint&#8230;</string>
+  <string name="terms_of_use_and_service_url_text">Условия использования и сервисы</string>
+  <string name="about_title">О Pocket Paint&#8230;</string>
   <string name="about_content">Pocket Paint is a picture editor that is part of the Catrobat project.\n\nCatrobat is a visual programming language and set of creativity tools for smartphones, tablets, and mobile browsers.\n\nThe source code of Pocket Paint is mainly licensed under the %s.\nFor precise details of the license see the link below.\n\n</string>
   <string name="about_license_url_text">Pocket Paint Source Code License</string>
   <string name="about_catroid_url_text">О проекте Catrobat</string>
@@ -107,9 +107,27 @@
   <string name="menu_quit">Quit</string>
   <string name="save_button_text">Save</string>
   <string name="discard_button_text">Discard</string>
+  <!--
+    exclude preferences for release
+        <string name="menu_preferences">Settings</string>
+    <string name="preferences_tools">Active Tools</string>
+    <string name="preferences_tools_summary">Activate/Deactivate tools.</string>
+    <string name="preference_button_redo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preference_button_undo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preferences_language">Change Display Language</string>
+    <string name="preferences_language_summary">Requires app restart.</string>
+    <string name="preferences_language_key">preferences_language_key</string>
+    <string name="preferences_language_dialog_reboot_warning_text">App restart required.</string>
+
+
+
+
+    -->
   <string name="resize_to_resize_tap_text">to resize tap</string>
   <string name="resize_nothing_to_resize">nothing to resize</string>
   <string name="resize_max_image_resolution_reached">max image resolution reached</string>
+  <!-- Extras -->
+  <!-- Return to Catroid -->
   <string name="dialog_unallowed_chars_title">Unallowed Character(s)</string>
   <string name="dialog_unallowed_chars_text">Only letters, numbers and \'_\' allowed.</string>
   <string name="dialog_shape_text">Shape</string>

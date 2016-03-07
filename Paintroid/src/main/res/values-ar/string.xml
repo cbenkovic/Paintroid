@@ -62,7 +62,7 @@
   <string name="dialog_tools_title">أدوات</string>
   <string name="dialog_save_title">حفظ الصورة</string>
   <string name="dialog_save_text">ادخل إسم الملف</string>
-  <string name="dialog_load">تحميل...</string>
+  <string name="dialog_load">تحميل&#8230;</string>
   <string name="dialog_overwrite_text">الكتابة/الحفظ فوق ملف موجود؟</string>
   <string name="dialog_error_save_title">خطأ في تحميل/حفظ الملف</string>
   <string name="dialog_error_sdcard_text">تحقق من بطاقة SD أو الصورة!</string>
@@ -107,9 +107,27 @@
   <string name="menu_quit">إنهاء/خروج</string>
   <string name="save_button_text">حفظ</string>
   <string name="discard_button_text">تجاهل</string>
+  <!--
+    exclude preferences for release
+        <string name="menu_preferences">Settings</string>
+    <string name="preferences_tools">Active Tools</string>
+    <string name="preferences_tools_summary">Activate/Deactivate tools.</string>
+    <string name="preference_button_redo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preference_button_undo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preferences_language">Change Display Language</string>
+    <string name="preferences_language_summary">Requires app restart.</string>
+    <string name="preferences_language_key">preferences_language_key</string>
+    <string name="preferences_language_dialog_reboot_warning_text">App restart required.</string>
+
+
+
+
+    -->
   <string name="resize_to_resize_tap_text">to resize tap</string>
   <string name="resize_nothing_to_resize">nothing to resize</string>
   <string name="resize_max_image_resolution_reached">max image resolution reached</string>
+  <!-- Extras -->
+  <!-- Return to Catroid -->
   <string name="dialog_unallowed_chars_title">حرف(أحرف) غير مسموحه</string>
   <string name="dialog_unallowed_chars_text">فقط أحرف ,أرقام و \'_\' المسموح به.</string>
   <string name="dialog_shape_text">الشكل</string>

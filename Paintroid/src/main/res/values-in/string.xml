@@ -62,7 +62,7 @@
   <string name="dialog_tools_title">Peralatan</string>
   <string name="dialog_save_title">Simpan Gambar</string>
   <string name="dialog_save_text">Masukkan nama berkas</string>
-  <string name="dialog_load">Memuat...</string>
+  <string name="dialog_load">Memuat&#8230;</string>
   <string name="dialog_overwrite_text">Timpa berkas yang ada?</string>
   <string name="dialog_error_save_title">Galat memuat/menyimpan berkas</string>
   <string name="dialog_error_sdcard_text">Periksa citra atau kartu SD!</string>
@@ -107,9 +107,27 @@
   <string name="menu_quit">Keluar</string>
   <string name="save_button_text">Simpan</string>
   <string name="discard_button_text">Singkirkan</string>
+  <!--
+    exclude preferences for release
+        <string name="menu_preferences">Settings</string>
+    <string name="preferences_tools">Active Tools</string>
+    <string name="preferences_tools_summary">Activate/Deactivate tools.</string>
+    <string name="preference_button_redo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preference_button_undo_summary">This is only affected if started from Pocket Code</string>
+    <string name="preferences_language">Change Display Language</string>
+    <string name="preferences_language_summary">Requires app restart.</string>
+    <string name="preferences_language_key">preferences_language_key</string>
+    <string name="preferences_language_dialog_reboot_warning_text">App restart required.</string>
+
+
+
+
+    -->
   <string name="resize_to_resize_tap_text">untuk mengubah ukuran ketuk</string>
   <string name="resize_nothing_to_resize">tidak ada yang diubah ukurannya</string>
   <string name="resize_max_image_resolution_reached">resolusi citra maksimum tercapai</string>
+  <!-- Extras -->
+  <!-- Return to Catroid -->
   <string name="dialog_unallowed_chars_title">Karakter Tak Diperbolehkan</string>
   <string name="dialog_unallowed_chars_text">Hanya huruf, angka dan \'_\' diperbolehkan.</string>
   <string name="dialog_shape_text">Bentuk</string>
