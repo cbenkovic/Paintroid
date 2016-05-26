@@ -8,7 +8,7 @@ android {
     buildToolsVersion "19.1.0"
 
     defaultConfig {
-		applicationId "org.catrobat.paintroid"
+		applicationId "org.catrobat.paintroid.hsv"
         minSdkVersion 10
         targetSdkVersion 19
         testApplicationId "org.catrobat.paintroid.test"

@@ -1,6 +1,9 @@
 package org.catrobat.paintroid.dialog.colorpicker;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ComposeShader;
@@ -15,6 +18,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import org.catrobat.paintroid.PaintroidApplication;
+import org.catrobat.paintroid.R;
 import org.catrobat.paintroid.tools.implementation.BaseTool;
 
 
@@ -34,6 +39,7 @@ public class HSVColorPickerView extends View {
 	private Paint mHueTrackerPaint;
 	private Paint mAlphaPaint;
 	private Paint mBorderPaint;
+	private Paint mCheckeredPaint;
 
 	private Shader mValShader;
 	private Shader mSatShader;
@@ -102,6 +108,12 @@ public class HSVColorPickerView extends View {
 		mHueTrackerPaint.setStrokeWidth(2f * mDensity);
 		mHueTrackerPaint.setAntiAlias(true);
 
+		mCheckeredPaint = new Paint(BaseTool.CHECKERED_PATTERN);
+		Bitmap checkerboard = BitmapFactory.decodeResource(
+				PaintroidApplication.applicationContext.getResources(), R.drawable.checkeredbg);
+		BitmapShader checkeredShader = new BitmapShader(checkerboard, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+		mCheckeredPaint.setShader(checkeredShader);
+
 	}
 
 	@Override
@@ -128,7 +140,7 @@ public class HSVColorPickerView extends View {
 					rect.bottom + BORDER_WIDTH_PX, mBorderPaint);
 		}
 
-        canvas.drawRect(rect, BaseTool.CHECKERED_PATTERN);
+		canvas.drawRect(rect, mCheckeredPaint);
 
 		float[] hsv = new float[] { mHue, mSat, mVal };
 		int color = Color.HSVToColor(hsv);
