@@ -28,7 +28,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 
 @SuppressLint("ValidFragment")
 public class InfoDialog extends DialogFragment implements

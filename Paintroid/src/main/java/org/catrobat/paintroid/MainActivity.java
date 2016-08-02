@@ -19,7 +19,28 @@
 
 package org.catrobat.paintroid;
 
-import java.io.File;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.LinearLayout;
 
 import org.catrobat.paintroid.dialog.BrushPickerDialog;
 import org.catrobat.paintroid.dialog.CustomAlertDialogBuilder;
@@ -41,29 +62,7 @@ import org.catrobat.paintroid.ui.DrawingSurface;
 import org.catrobat.paintroid.ui.Perspective;
 import org.catrobat.paintroid.ui.TopBar;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.SurfaceView;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
+import java.io.File;
 
 public class MainActivity extends OptionsMenuActivity {
 
@@ -86,26 +85,8 @@ public class MainActivity extends OptionsMenuActivity {
 		IndeterminateProgressDialog.init(this);
 		TextToolDialog.init(this);
 
-		/**
-		 * EXCLUDED PREFERENCES FOR RELEASE /*SharedPreferences
-		 * sharedPreferences = PreferenceManager
-		 * .getDefaultSharedPreferences(this); String languageString =
-		 * sharedPreferences.getString(
-		 * getString(R.string.preferences_language_key), "nolang");
-		 * 
-		 * if (languageString.equals("nolang")) {
-		 * Log.e(PaintroidApplication.TAG, "no language preference exists"); }
-		 * else { Log.i(PaintroidApplication.TAG, "load language: " +
-		 * languageString); Configuration config =
-		 * getBaseContext().getResources() .getConfiguration(); config.locale =
-		 * new Locale(languageString);
-		 * getBaseContext().getResources().updateConfiguration(config,
-		 * getBaseContext().getResources().getDisplayMetrics()); }
-		 */
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		// setDefaultPreferences();
 		initActionBar();
 
 		PaintroidApplication.catroidPicturePath = null;
@@ -123,8 +104,8 @@ public class MainActivity extends OptionsMenuActivity {
 			if (!catroidPicturePath.equals("")) {
 				PaintroidApplication.catroidPicturePath = catroidPicturePath;
 			}
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setDisplayShowHomeEnabled(true);
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+			getActionBar().setDisplayShowHomeEnabled(true);
 		} else {
 			PaintroidApplication.openedFromCatroid = false;
 		}
@@ -193,15 +174,15 @@ public class MainActivity extends OptionsMenuActivity {
 			new InfoDialog(DialogType.WARNING,
 					R.string.dialog_loading_image_failed_title,
 					R.string.dialog_loading_image_failed_text).show(
-					getSupportFragmentManager(), "loadbitmapdialogerror");
+					getFragmentManager(), "loadbitmapdialogerror");
 		}
 	}
 
 	private void initActionBar() {
 
-		getSupportActionBar().setCustomView(R.layout.top_bar);
-		getSupportActionBar().setDisplayShowHomeEnabled(false);
-		getSupportActionBar().setDisplayShowCustomEnabled(true);
+		getActionBar().setCustomView(R.layout.top_bar);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowCustomEnabled(true);
 		if (Build.VERSION.SDK_INT < ANDROID_VERSION_ICE_CREAM_SANDWICH) {
 			Bitmap bitmapActionBarBackground = Bitmap.createBitmap(1, 1,
 					Config.ARGB_8888);
@@ -209,8 +190,8 @@ public class MainActivity extends OptionsMenuActivity {
 					R.color.custom_background_color));
 			Drawable drawable = new BitmapDrawable(getResources(),
 					bitmapActionBarBackground);
-			getSupportActionBar().setBackgroundDrawable(drawable);
-			getSupportActionBar().setSplitBackgroundDrawable(drawable);
+			getActionBar().setBackgroundDrawable(drawable);
+			getActionBar().setSplitBackgroundDrawable(drawable);
 		}
 	}
 
@@ -246,7 +227,7 @@ public class MainActivity extends OptionsMenuActivity {
 		super.onCreateOptionsMenu(menu);
 		mMenu = menu;
 		PaintroidApplication.menu = mMenu;
-		MenuInflater inflater = getSupportMenuInflater();
+		MenuInflater inflater = getMenuInflater();
 		if (PaintroidApplication.openedFromCatroid) {
 			inflater.inflate(R.menu.main_menu_opened_from_catroid, menu);
 		} else {
@@ -265,12 +246,12 @@ public class MainActivity extends OptionsMenuActivity {
 			return true;
 		case R.id.menu_item_terms_of_use_and_service:
 			DialogTermsOfUseAndService termsOfUseAndService = new DialogTermsOfUseAndService();
-			termsOfUseAndService.show(getSupportFragmentManager(),
+			termsOfUseAndService.show(getFragmentManager(),
 					"termsofuseandservicedialogfragment");
 			return true;
 		case R.id.menu_item_about:
 			DialogAbout about = new DialogAbout();
-			about.show(getSupportFragmentManager(), "aboutdialogfragment");
+			about.show(getFragmentManager(), "aboutdialogfragment");
 			return true;
 		case R.id.menu_item_hide_menu:
 			setFullScreen(mToolbarIsVisible);
@@ -280,12 +261,6 @@ public class MainActivity extends OptionsMenuActivity {
 				showSecurityQuestionBeforeExit();
 			}
 			return true;
-			/* EXCLUDE PREFERENCES FOR RELEASE */
-			// case R.id.menu_item_preferences:
-			// Intent intent = new Intent(this, SettingsActivity.class);
-			// intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-			// startActivity(intent);
-			// return false;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -480,7 +455,7 @@ public class MainActivity extends OptionsMenuActivity {
 	private void setFullScreen(boolean isFullScreen) {
 		PaintroidApplication.perspective.setFullscreen(isFullScreen);
 		if (isFullScreen) {
-			getSupportActionBar().hide();
+			getActionBar().hide();
 			LinearLayout bottomBarLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
 			bottomBarLayout.setVisibility(View.GONE);
 			mToolbarIsVisible = false;
@@ -488,7 +463,7 @@ public class MainActivity extends OptionsMenuActivity {
 			getWindow().clearFlags(
 					WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 		} else {
-			getSupportActionBar().show();
+			getActionBar().show();
 			LinearLayout bottomBarLayout = (LinearLayout) findViewById(R.id.main_bottom_bar);
 			bottomBarLayout.setVisibility(View.VISIBLE);
 			mToolbarIsVisible = true;
@@ -497,11 +472,5 @@ public class MainActivity extends OptionsMenuActivity {
 			getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		}
 	}
-
-	/* EXCLUDE PREFERENCES FOR RELEASE */
-	// private void setDefaultPreferences() {
-	// PreferenceManager
-	// .setDefaultValues(this, R.xml.preferences_tools, false);
-	// }
 
 }

@@ -200,7 +200,7 @@ public abstract class BaseTool extends Observable implements Tool, Observer {
 		BrushPickerDialog.getInstance().addBrushChangedListener(mStroke);
 		BrushPickerDialog.getInstance().setCurrentPaint(mBitmapPaint);
 		BrushPickerDialog.getInstance().show(
-				((MainActivity) mContext).getSupportFragmentManager(),
+				((MainActivity) mContext).getFragmentManager(),
 				"brushpicker");
 	}
 

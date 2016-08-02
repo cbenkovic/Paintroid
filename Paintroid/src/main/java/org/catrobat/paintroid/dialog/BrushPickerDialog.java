@@ -19,20 +19,16 @@
 
 package org.catrobat.paintroid.dialog;
 
-import java.util.ArrayList;
-
-import org.catrobat.paintroid.R;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,6 +36,10 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import org.catrobat.paintroid.R;
+
+import java.util.ArrayList;
 
 @SuppressLint("ValidFragment")
 public final class BrushPickerDialog extends DialogFragment implements

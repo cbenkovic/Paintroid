@@ -41,11 +41,9 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Display;
 import android.widget.Toast;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
-
-public abstract class OptionsMenuActivity extends SherlockFragmentActivity {
+public abstract class OptionsMenuActivity extends Activity {
 
 	protected static final int REQUEST_CODE_IMPORTPNG = 1;
 	protected static final int REQUEST_CODE_LOAD_PICTURE = 2;
@@ -288,7 +286,7 @@ public abstract class OptionsMenuActivity extends SherlockFragmentActivity {
 			new InfoDialog(DialogType.WARNING,
 					R.string.dialog_error_sdcard_text,
 					R.string.dialog_error_save_title).show(
-					getSupportFragmentManager(), "savedialogerror");
+					getFragmentManager(), "savedialogerror");
 			return;
 		}
 		Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -326,7 +324,7 @@ public abstract class OptionsMenuActivity extends SherlockFragmentActivity {
 					new InfoDialog(DialogType.WARNING,
 							R.string.dialog_loading_image_failed_title,
 							R.string.dialog_loading_image_failed_text).show(
-							getSupportFragmentManager(),
+							getFragmentManager(),
 							"loadbitmapdialogerror");
 				} else {
 					if (!(PaintroidApplication.currentTool instanceof ImportTool)) {
@@ -346,7 +344,7 @@ public abstract class OptionsMenuActivity extends SherlockFragmentActivity {
 			new InfoDialog(DialogType.WARNING,
 					R.string.dialog_error_sdcard_text,
 					R.string.dialog_error_save_title).show(
-					getSupportFragmentManager(), "savedialogerror");
+					getFragmentManager(), "savedialogerror");
 		}
 
 		PaintroidApplication.isSaved = true;

@@ -20,6 +20,7 @@
 package org.catrobat.paintroid.tools.implementation;
 
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,7 +28,6 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.v4.app.FragmentManager;
 
 import org.catrobat.paintroid.MainActivity;
 import org.catrobat.paintroid.PaintroidApplication;
@@ -117,7 +117,7 @@ public class TextTool extends BaseToolWithRectangleShape {
 	}
 
 	protected void showTextToolDialog() {
-		FragmentManager fm = ((MainActivity) mContext).getSupportFragmentManager();
+		FragmentManager fm = ((MainActivity) mContext).getFragmentManager();
 		TextToolDialog.getInstance().show(fm, "texttool");
 		resetBoxPosition();
 	}

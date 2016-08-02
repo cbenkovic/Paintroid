@@ -26,8 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.util.Log;
-
-import com.actionbarsherlock.view.Menu;
+import android.view.Menu;
 
 import org.catrobat.paintroid.command.CommandManager;
 import org.catrobat.paintroid.command.implementation.CommandManagerImplementation;

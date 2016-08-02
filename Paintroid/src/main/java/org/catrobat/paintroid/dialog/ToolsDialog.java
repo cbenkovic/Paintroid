@@ -89,7 +89,7 @@ public class ToolsDialog extends BaseDialog implements OnItemClickListener,
 		ToolType toolType = mToolButtonAdapter.getToolType(position);
 		new InfoDialog(DialogType.INFO, toolType.getHelpTextResource(),
 				toolType.getNameResource()).show(
-				mParent.getSupportFragmentManager(),
+				mParent.getFragmentManager(),
 				FRAGMENT_TRANSACTION_TAG_HELP);
 		return true;
 	}
