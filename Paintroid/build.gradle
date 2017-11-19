@@ -20,7 +20,7 @@
 apply plugin: 'com.android.application'
 apply from: 'adb_tasks.gradle'
 
-def appId = 'org.catrobat.paintroid'
+def appId = 'org.catrobat.paintroid.pocket_paint.huawei'
 def appName = '@string/app_name'
 
 // When -Pindependent was provided on the gradle command the APP name is changed.
@@ -42,7 +42,7 @@ android {
         targetSdkVersion 22
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         versionCode 18
-        versionName "1.1.15"
+        versionName "1.1.16"
         manifestPlaceholders += [appName: appName]
         externalNativeBuild {
             cmake {
